@@ -1,0 +1,709 @@
+<template>
+
+	<div class="earlySchedule_section lightBlue_bg register">
+		<section>
+			<!-- location section  -->
+			<div class="locationSchedule">
+				<div class="auto_container">
+					<div class="locationSchedule_detail">
+						<div class="locationSchedule_data">
+							<div class="location_info addseprator padd_r_40">
+								<span><img src="../resource/dubaiImage/images/calender_icon.png" alt="#" /></span>
+								<strong>9th November, 2024</strong>
+							</div>
+							<div class="location_info padd_l_40">
+								<span><img src="../resource/dubaiImage/images/map_icon.png" alt="#" /></span>
+								<strong>Dubai, UAE</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<!-- tickects process section  -->
+			<div class="ticketsProcess_section goto_register" id="goto_register">
+				<div class="auto_container">
+					<div class="ticketsProcess_detail">
+						<div class="ticket_table">
+							<div class="ticket_table_fl">
+								<div class="ticket_table_flShow">
+									<div class="ticket-title ">
+										<h3><strong>DUBAI </strong> DREAMIN</h3>
+										<p>COMMUNITY- LED CONFERENCE UNITING PASSION, PURPOSE, AND SALESFORCE
+											EXCELLENCE.</p>
+									</div>
+
+									<div class="ticketProcess_form">
+										<form>
+											<ul>
+												<template for:each={tickets} for:item="ticket">
+
+
+
+													<li key={ticket.id}>
+														<template if:true={ticket.active}>
+
+															<div class="ticketTable_row earlyRow_bg">
+																<div class="ticketTable_rowText">
+																	<strong>{ticket.nickname}</strong>
+																	<p>{ticket.description}</p>
+																</div>
+																<div class="vat_info">
+																	<strong>AED {ticket.unitAmount}</strong>
+																	<small>+ VAT AED {ticket.vatTax}</small>
+																</div>
+																<div class="quantity_info">
+																	<strong>Quantity</strong>
+
+																	<input type="number" name="Quantity"
+																		label="Quantity" value={quantity}
+																		oninput={handleQuantityChange}
+																		data-ticketid={ticket.id}>
+																	<template if:true={showWarning}>
+																		<div class="warning-message">
+																			Please enter quantity between 1 to 99
+																		</div>
+																	</template>
+																</div>
+
+
+
+
+															</div>
+														</template>
+														<template if:false={ticket.active}>
+															<div class="ticketTable_row earlyRow_bg"
+																onclick={handleTicketSelection}>
+																<div class="ticketTable_rowText">
+																	<strong>{ticket.nickname}</strong>
+																	<p>{ticket.description}</p>
+
+																</div>
+																<div class="vat_info">
+																	<strong>AED {ticket.unitAmount}</strong>
+																	<small>+ VAT AED {ticket.vatTax}</small>
+																</div>
+
+
+																<div class="quantity_info">
+																	<strong>Quantity</strong>
+
+																	<input type="number" name="Quantity"
+																		label="Quantity" value=""
+																		oninput={handleQuantityChange}
+																		data-ticketid={ticket.id} disabled>
+																	<!-- <template if:true={showWarning}>
+																	<div class="showWarning">
+																		Enter quatity between 1 to 99
+																	</div>
+																</template> -->
+																</div>
+
+															</div>
+														</template>
+
+													</li>
+
+
+
+												</template>
+											</ul>
+										</form>
+									</div>
+
+									<div class="checkout_row">
+
+										<p>Please Read carefully our Terms and condition and refund polices before check
+											out.</p>
+										<!-- <button class="checkoutBtnn btnDefault">CHECK OUT</button> -->
+										<button class="checkoutBtnn btnDefault" onclick={handleCheckout}>Check
+											Out</button>
+									</div>
+								</div>
+
+								<div class="attendee-form" if:false={isLoading} >
+									<!-- <div class="ticket_table_flCheckout"> -->
+									<div class="">
+										<div class="ticket_table_fl_tittle">
+											<h3><strong>DUBAI </strong> DREAMIN</h3>
+
+											<div class="checkoutTittle">
+												<a href="javascript:void(0)" class="backtoCheckout"
+													onclick={reverseToggle}><img
+														src="../resource/dubaiImage/images/checkout_arrow.png"
+														alt="#" /> Back</a>
+												<!-- <strong>Time Left:<small>  29:00</small></strong> -->
+											</div>
+										</div>
+
+
+										<div class="ticketProcess_checkoutform">
+											<template if:true={isPrimaryForm} >
+
+												<ul class="primary-attendee">
+													<li>
+														<div class="customInput_col">
+															<strong>FIRST NAME <span class="star">*</span></strong>
+
+															<div class="customInput_field">
+																
+																<input type="text" placeholder="First Name"
+																	label="FIRST NAME" value={primaryFirstName}
+																	onchange={handlePrimaryChange}
+																	data-id="firstName" required />
+																<span if:false={primaryFirstName} class="error-msg"></span>
+															</div>
+														</div>
+													</li>
+
+
+													<li>
+														<div class="customInput_col">
+															<strong>Last Name<span class="star">*</span></strong>
+															<div class="customInput_field">
+																<input onchange={handlePrimaryChange} type="text"
+																value={primaryLastName} placeholder="Last Name"
+																data-id="lastName" required>
+																<span if:false={primaryLastName} class="error-msg"></span>
+
+															</div>
+														</div>
+													</li>
+
+
+
+													<li>
+														<div class="customInput_col">
+															<strong>EMAIL<span class="star">*</span></strong>
+															<div class="customInput_field">
+																<input onchange={handlePrimaryChange} data-id="email"
+																value={primaryEmail} placeholder="Enter Your Email address"
+																 required
+																 
+																 type="email">
+																<span if:false={primaryEmail} class="error-msg"></span>
+																<span class="email-validation-msg"></span>
+
+
+															</div>
+														</div>
+													</li>
+													
+													<li>
+														<div class="customInput_col">
+															<strong>Trailblazer Id<span class="star">*</span></strong>
+															<div class="customInput_field">
+																<input onchange={handlePrimaryChange} type="text" value={trailblazerId} placeholder="Enter Your Trailblazer Id" data-id="trailblazerId" required>
+															 <span if:false={trailblazerId} class="error-msg"></span>
+															   
+																</div>
+															</div>
+													</li>
+													<li>
+														<div class="customInput_col">
+															<strong>LINKEDIN<span class="star">*</span></strong>
+															<div class="customInput_field">
+																<input onchange={handlePrimaryChange} type="text" value={linkedinId} placeholder="Enter Your Linkedin" data-id="linkedinId" required>
+															 <span if:false={linkedinId} class="error-msg"></span>
+															   
+																</div>
+															</div>
+													</li>
+													<li class="">
+														<div class="customInput_col">
+															<strong>COUNTRY<span class="star">*</span></strong>
+															<div class="customInput_field">
+																
+																<select onchange={handlePrimaryChange} data-id="country" required>
+																	 <!-- <option>UK</option>
+																 <option>US</option> -->
+																	<template for:each={countryPickList} for:item="item">
+																		<option key={item.value} value={item.value}>{item.label}</option>
+																	</template>
+																 </select>
+															 <span if:false={country}  class="error-msg"></span>
+																
+																 
+															</div>
+														</div>
+													</li>
+	
+													
+												
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>PHONE NUMBER<span class="star">*</span></strong>
+															<div class="customInput_field">
+																<div style="display: flex;">
+																	
+																	<input onchange={handlePrimaryChange} style="margin-left:2px" type="text" value={phoneNumber} placeholder="Enter Your Phone Number" data-id="phoneNumber" required>
+																</div>
+																<div if:false={phoneNumber} class="error-msg"></div>
+															</div>
+														</div>
+													</li>
+												
+	
+	
+	
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>WHICH TYPE OF SESSIONS ARE YOU INTERESTED IN?</strong>
+															<div class="customInput_field">
+																<select onchange={handlePrimaryChange} data-id="sessionInterest" required>
+																  
+																  <template for:each={sessionIntrestPickList} for:item="item">
+																	<option key={item.value} value={item.value}>{item.label}</option>
+																</template>
+																 
+																 </select>
+															 <div class="error-msg"></div>
+																 
+															</div>
+														</div>
+													</li>
+	
+	
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>FOOD PREFERENCE</strong>
+															<div class="customInput_field">
+																<select onchange={handlePrimaryChange} data-id="foodPreference" required>
+																  <!-- <option>Veg</option>
+																  <option>Non-Veg</option> -->
+																  <template for:each={foodPreferencePickList} for:item="item">
+																	<option key={item.value} value={item.value}>{item.label}</option>
+																</template>
+																  
+																 
+																 </select>
+															 <div class="error-msg"></div>
+	
+															</div>
+														</div>
+													</li>
+	
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>T-SHIRT SIZE</strong>
+															<div class="customInput_field">
+																<select onchange={handlePrimaryChange} data-id="tShirtSize" required>
+																  <!-- <option>Small</option>
+																  <option>Medium</option>
+																  <option>Large</option> -->
+																  <template for:each={tShirtSizePickList} for:item="item">
+																	<option key={item.value} value={item.value}>{item.label}</option>
+																	
+																</template>
+																  
+															 <div class="error-msg"></div>
+																  
+																 
+																 </select>
+															 <div class="error-msg"></div>
+	
+															</div>
+														</div>
+													</li>
+	
+	
+	
+	
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>COMPANY NAME</strong>
+	
+															<div class="customInput_field">
+																<input onchange={handlePrimaryChange} type="text"
+																	value={companyName} placeholder="XYZ"
+																	data-id="companyName" required />
+																	<div if:false={companyName} class="error-msg"></div>
+	
+															</div>
+															</div>
+													</li>
+	
+	
+													<li class="w-50">
+														<div class="customInput_col">
+															<strong>COMPANY SIZE</strong>
+															<div class="customInput_field">
+																<select onchange={handlePrimaryChange} data-id="companySize" required>
+																	<!-- <option>1 - 50 </option>
+																  <option>50 - 100</option> -->
+																<template for:each={companySizePickList} for:item="item">
+																	<option key={item.value} value={item.value}>{item.label}</option>
+																</template>
+															</select>
+															<div class="error-msg"></div>
+	
+																<!-- <select onchange={handleFieldChange} data-fieldname="COMPANY SIZE">
+																	<option>1 - 50 </option>
+																  <option>50 - 100</option>
+																  <option>100 - 300</option>
+																															
+																</select> -->
+															
+															</div>
+														</div>
+													</li>
+	
+													<li class="w-100">
+														<div class="customInput_col">
+	
+															<div class="customInput_field">
+																<textarea placeholder="Message"
+																	onchange={handlePrimaryChange}  data-id='message' value={message} ></textarea>
+																	<div class="error-msg"></div>
+															</div>
+														</div>
+													
+														<div if:true={showAgreementCheckbox} class="customCheckbox">
+															<input type="checkbox"  onchange={handlePrimaryChange} data-id="agreement" value={agreement} required><label style="padding-left: 10px;"><span class="star">*</span>I agree to the above additional terms.</label>
+															 <span if:false={agreement} class="error-msg"></span>
+															
+															
+	
+														</div>
+													</li>
+													<li>
+														<div class="formSubmitBtn" style="display: flex; flex-wrap: wrap">
+														<template if:true={showNextButton}>
+															<button class="btnDefault" onclick={handleNext}>Next</button>
+														</template>
+														<template if:true={showPlaceOrderButton}>
+															<button onclick={handlePayNow} class="btnDefault placeOrder">Place Order</button>
+														</template>
+													</div>
+													</li>
+												</ul>
+											</template>
+											<template if:true={isAdditionalForm}>
+												<!-- Additional Attendee Form -->
+													<template for:each={currentAdditionalAttendees} for:item="attendee" for:index="index">
+													<div key={attendee.id} class="attendee-card">
+														<h3>Additional Attendee  </h3>
+														<ul class="additional-attendee">
+															<div style="display: flex; width: 100%;">
+															<li class="">
+																<div class="customInput_col">
+																	<strong>FIRST NAME <span class="star">*</span></strong>
+		
+																	<div class="customInput_field">
+																			<input type="text" placeholder="First Name"
+																			label="FIRST NAME" value={attendee.firstName}
+																			onchange={handleAdditionalChange}
+																			data-id="firstName" 
+																			data-index={attendee.id}
+																			
+																			required />
+																		<span if:false={attendee.firstName} class="error-msg"></span>
+																	</div>
+																</div>
+															</li>
+		
+		
+															<li class="">
+																<div class="customInput_col">
+																	<strong>Last Name<span class="star">*</span></strong>
+																	<div class="customInput_field">
+																		<input onchange={handleAdditionalChange} type="text"
+																			value={attendee.lastName} placeholder="Last Name"
+																			data-id="lastName"
+																			data-index={attendee.id}
+																			required>
+																		<span if:false={attendee.lastName} class="error-msg"></span>
+		
+																	</div>
+																</div>
+															</li>
+															
+														</div>
+		
+															<li class="w-100">
+																<div class="customInput_col">
+																	<strong>EMAIL<span class="star">*</span></strong>
+																	<div class="customInput_field">
+																		<input onchange={handleAdditionalChange} type="email"
+																			value={attendee.email} placeholder="Enter Your Email address"
+																			 data-id="email"  
+																			data-index={attendee.id}
+																			required>
+																		<span if:false={attendee.email} class="error-msg"></span>
+																		<span class="email-validation-msg"></span>
+		
+		
+																	</div>
+																</div>
+															</li>
+															</ul>
+
+															
+																																		
+													</div>
+													
+												</template>
+												<div class="formSubmitBtn" style="display: flex; flex-wrap: wrap">
+													<button class="btnDefault" onclick={handlePrevious} if:true={showPreviousButton}>Previous</button>
+													<template if:true={showNextButton}>
+														<button class="btnDefault" onclick={handleNext}>Next</button>
+													</template>
+													<template if:true={showPlaceOrderButton}>
+														<button onclick={handlePayNow} class="btnDefault placeOrder">Place Order</button>
+													</template>
+												</div>
+												
+											</template>
+										</div>
+									</div>
+								</div>
+								<div class="loader-container" if:true={isLoading}>
+									<div class="loader"></div>
+								  </div>
+
+							</div>
+
+
+							<div class="ticket_table_fr">
+								<div class="summary_section">
+									<div class="registerProcess">
+										<span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+									</div>
+									<template if:true={showOrderSummary}>
+										<div class="summary_table">
+											<h4>Order Summary</h4>
+
+											<div class="summary_table_list">
+												<template for:each={ticketsWithSummary} for:item="ticketWithQuantity">
+													<ul key={ticketWithQuantity.id}>
+														<li>
+															<div class="summary_table_listText">
+																<p>{ticketWithQuantity.ticketTitle} x
+																	{ticketWithQuantity.quantity}</p>
+																<small>AED {ticketWithQuantity.ticketPrice}</small>
+															</div>
+														</li>
+														<li>
+															<div class="summary_table_listText">
+																<p>Subtotal</p>
+																<small>AED {ticketWithQuantity.subTotalPrice}</small>
+
+
+															</div>
+
+														</li>
+
+														<li if:true={showAppliedPromoMessage}>
+															<div if:false={showInActivePromoMessage}>
+																<div class="summary_table_listText"
+																	if:false={showInValidPromoMessage}>
+																	<p class="promo-code">
+																		<span style="margin-right: 4px;">
+																			{promoCode}</span>
+																		<span>(10%)</span>
+																	</p>
+																	<small>- AED
+																		{ticketWithQuantity.discountAmount}</small>
+																</div>
+															</div>
+														</li>
+
+
+														
+														<li>
+															<div class="summary_table_listText">
+																<p><strong>Total </strong></p>
+
+																<small if:false={showAppliedPromoMessage}>AED
+																	{ticketWithQuantity.totalPrice}</small>
+																<small if:true={showAppliedPromoMessage}>AED
+																	{ticketWithQuantity.totalDiscountedPrice}</small>
+
+															</div>
+														</li>
+													</ul>
+												</template>
+												<div style="margin-top:20px">
+
+
+
+													<div class="subcribe_email_sec">
+														<div class="subcribe_email">
+
+															<div class="subcribe_email_input"
+																style="background-color: white;">
+																<input type="text" value={promoCode}
+																	placeholder="ENTER PROMO CODE"
+																	onchange={handlePromoCodeChange} />
+															</div>
+															<div class="subcribe_email_sbmt">
+																<input type="submit" value="APPLY"
+																	onclick={handleApplyPromo}
+																	disabled={disableApplyAction} />
+
+															</div>
+
+														</div>
+
+
+													</div>
+													<div class="inActive-promo-message"
+														if:true={showInActivePromoMessage}>
+														<span>Promo Code is inactive or expired! 🚫</span>
+													</div>
+													<div class="invalid-promo-message"
+														if:true={showInValidPromoMessage}>
+														<span>Promo Code is not found or invalid! ⛔</span>
+
+													</div>
+													<div class="apply-promo-message" if:true={showAppliedPromoMessage}>
+														<span>Promo Code has been applied! <span
+																style="font-size: 15px;">🥳</span></span>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</template>
+									<template if:true={noteMessage}>
+										<div class="note-message">
+											<span class="note-icon">ℹ️</span>
+											Tax is applicable only for UAE.
+										</div>
+									</template>
+									<div class="termText">
+
+
+										<p>Terms and conditions and refund policy.</p>
+										<p>Rate vary the time and local tax please read carefully our policy.</p>
+									</div>
+								</div>
+								<!-- <div class="summary_section">
+									<div class="registerProcess">
+										<span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+									</div>
+									<template if:true={showOrderSummary}>
+										<div class="summary_table">
+											<h4>Order Summary</h4>
+
+											<div class="summary_table_list">
+												<template for:each={ticketsWithSummary} for:item="ticketWithQuantity">
+													<ul key={ticketWithQuantity.id}>
+														<li>
+															<div class="summary_table_listText">
+																<p>{ticketWithQuantity.ticketTitle} x
+																	{ticketWithQuantity.quantity}</p>
+																<small>AED {ticketWithQuantity.ticketPrice}</small>
+															</div>
+														</li>
+														<li>
+															<div class="summary_table_listText">
+																<p>Subtotal</p>
+																<small>AED {ticketWithQuantity.subTotalPrice}</small>
+
+																
+															</div>
+															
+														</li>
+														
+														<li if:true={ticketWithQuantity.discountAmount}>
+															<div class="summary_table_listText">
+																<p class="promo-code">
+																	<span style="margin-right: 4px;" > {promoCode}</span> 
+																	<span>(10%)</span>
+																</p>
+																<small>- AED {ticketWithQuantity.discountAmount}</small>
+															</div>
+														</li>
+
+
+														
+														<li>
+															<div class="summary_table_listText">
+																<p><strong>Total </strong></p>
+																<small>AED {ticketWithQuantity.totalPrice}</small>
+
+															</div>
+														</li>
+													</ul>
+												</template>
+											
+											
+											<div style="margin-top:20px" if:true={showPromoButton}>
+												
+												
+													
+													<div class="subcribe_email_sec">
+														<div class="subcribe_email">
+															<div class="subcribe_email_input" style="background-color: white;">
+																<input type="text" value={promoCode} placeholder="ENTER PROMO CODE" onchange={handlePromoCodeChange} />
+															</div>
+															<div class="subcribe_email_sbmt">
+																<input type="submit" value="APPLY"  onclick={handleApplyPromo} />
+															</div> 
+															
+														</div>
+					
+													
+													</div>
+												
+											</div>
+											</div>
+										</div>
+									</template>
+									<template if:true={noteMessage}>
+									<div class="note-message">
+										<span class="note-icon">ℹ️</span>
+										Tax is applicable only for UAE.
+									  </div></template>
+									<div class="termText">
+										
+										
+										<p>Terms and conditions and refund policy.</p>
+										<p>Rate vary the time and local tax please read carefully our policy.</p>
+									</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section>
+			<!-- become speaker section  -->
+			<div class="becomeSpeaker_section">
+				<div class="shapeFl"></div>
+				<div class="shapeFr"></div>
+				<div class="auto_container">
+					<div class="becomeSpeaker_section_detail">
+						<div class="becomeSpeaker_info">
+							<h2>Unlock the Power of Salesforce in the Heart of Dubai</h2>
+							<p>Discover the power of AI, Innovation, Collaboration, and Transformation at the most
+								anticipated event of the year – the Biggest Salesforce Conference in Dubai! Join
+								Industry Leaders, TrAIlblazers, and Visionaries from around the Globe as we converge to
+								explore the limitless possibilities of the Salesforce ecosystem in the globalized city
+								of Dubai!</p>
+							<a href={speakersLink}><button class="btnDefault speakerBtn">Become Our Speaker</button></a>
+							<!-- <div class="RSVP-section Speaker-Registration-section"> -->
+							<!-- <c-speaker-registration-form selected-event-id={selectedEventId}>
+								</c-speaker-registration-form> -->
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	</div>
+
+	<!-- ----tickets section ends here----- -->
+
+
+</template>

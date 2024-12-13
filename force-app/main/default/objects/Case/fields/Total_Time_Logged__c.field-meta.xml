@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Time_Logged__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF (
+ISBLANK(Total_Time__c),
+NULL,
+TEXT(FLOOR(Total_Time__c / 60 / 60)) &amp; &quot;h : &quot; &amp;
+LPAD(TEXT(FLOOR(MOD(Total_Time__c / 60, 60))), 2, &quot;0&quot;) &amp; &quot;m&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Time Logged</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

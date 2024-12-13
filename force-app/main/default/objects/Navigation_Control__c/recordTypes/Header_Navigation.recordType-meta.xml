@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Header_Navigation</fullName>
+    <active>true</active>
+    <label>Header Navigation</label>
+    <picklistValues>
+        <picklist>Section__c</picklist>
+        <values>
+            <fullName>About Us</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Us</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FAQs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sessions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Speakers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sponsors</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Social_Media_Type__c</picklist>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Twitter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

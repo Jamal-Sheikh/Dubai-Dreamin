@@ -1,0 +1,40 @@
+<!-- dubainavbar.html -->
+<template>
+	<div class="myStickyHeader sticky">
+	<header class="navbar">
+		<!-- Logo -->
+		<div class="companyLogo">
+			<a href={homeLink}><img src={companyLogo} alt="logo" srcset=""></a>
+         </div>
+			<!-- Navigation Items -->
+
+			<div class="nav-items mainNav">
+				<ul class={menuClass}>
+					<template for:each={navigationItems} for:item="navItem">
+						<li onclick={handleNavItemClick} data-section={navItem.section} key={navItem.DeveloperName}>
+							{navItem.menuTab} </li>
+					</template>
+
+							<li> <a href={homeLink}> Home </a></li>
+							<li> <a href={speakersLink}> Speakers </a></li>
+							<li> <a href={ourSpeakersLink}> Our Speakers </a></li>
+							<li> <a href={sponsorsLink}> Sponsors </a></li>
+							<li> <a href={aboutUsLink}> About Us </a></li>
+
+
+				<!-- <button class="contactUs">Contact Us</button> -->
+				</ul>
+
+				<div class="hamburger-icon"  onclick={toggleMenu}>
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"></div>
+				</div>
+			</div>
+			<!-- Contact Us Button -->
+			<!-- <div class="contact-us">
+            <c-blue-button button-label={buttonLabel}></c-blue-button>
+        </div> -->
+	</header>
+	</div>
+</template>

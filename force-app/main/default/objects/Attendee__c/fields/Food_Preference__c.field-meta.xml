@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Food_Preference__c</fullName>
+    <externalId>false</externalId>
+    <label>Food Preference</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Non-Veg</fullName>
+                <default>false</default>
+                <label>Non-Veg</label>
+            </value>
+            <value>
+                <fullName>Veg</fullName>
+                <default>false</default>
+                <label>Veg</label>
+            </value>
+            <value>
+                <fullName>Non-Vegetarian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Vegetarian</label>
+            </value>
+            <value>
+                <fullName>Vegetarian</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vegetarian</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

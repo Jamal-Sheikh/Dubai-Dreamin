@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Rejected Speaker Voucher</label>
+    <protected>false</protected>
+    <values>
+        <field>Activation_Date__c</field>
+        <value xsi:type="xsd:date">2024-06-10</value>
+    </values>
+    <values>
+        <field>Coupon_Id__c</field>
+        <value xsi:type="xsd:string">GCcEdfZZ</value>
+    </values>
+    <values>
+        <field>Expiry_Date__c</field>
+        <value xsi:type="xsd:date">2024-09-07</value>
+    </values>
+    <values>
+        <field>Off__c</field>
+        <value xsi:type="xsd:double">20.0</value>
+    </values>
+    <values>
+        <field>One_Time_Use_Only__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Promo_Code__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

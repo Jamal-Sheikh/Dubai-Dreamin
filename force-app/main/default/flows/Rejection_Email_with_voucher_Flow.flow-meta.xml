@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Rejection_Email_for_speaker_session</name>
+        <label>Rejection Email for speaker session</label>
+        <locationX>50</locationX>
+        <locationY>576</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mrehman@cloud-1.co</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Dubai Dreamin &apos;24 - Session Proposal Update</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>RejectionHTML</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>Timeline_Equal_Date</name>
+        <label>Timeline Equal Date</label>
+        <locationX>182</locationX>
+        <locationY>360</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Equal_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.CurrentDate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Timeline_Metadata.Rejection_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Session_Speakers</targetReference>
+            </connector>
+            <label>Equal Date</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Rejection Email with voucher Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Rejection Voucher Gen Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Session_Speakers</name>
+        <label>Session Speakers</label>
+        <locationX>50</locationX>
+        <locationY>468</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Rejection_Email_for_speaker_session</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Speaker__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Session_Speaker__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Timeline_Metadata</name>
+        <label>Timeline Metadata</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Timeline_Equal_Date</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Dubai_Dreamin_Timeline__mdt</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Rejection_Date__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Timeline_Metadata</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Approval_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Is_Attendee__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Speaker__c</object>
+        <schedule>
+            <frequency>Once</frequency>
+            <startDate>2024-06-12</startDate>
+            <startTime>19:25:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>RejectionHTML</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;html style=&quot;overflow-y: hidden;&quot;&gt;
+&lt;head&gt;
+	&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style=&quot;height: auto; min-height: auto;&quot;&gt;
+&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;contentpageDefaultEmailTemplatePageTemplate&quot; id=&quot;contentpage_emailTemplateBodyContent&quot; style=&quot;background-color: #EAF3FE; border-radius:20px;&quot; width=&quot;100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td align=&quot;center&quot; width=&quot;100%&quot;&gt;
+			&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;contentRoot&quot; style=&quot;background-color: #EAF3FE;&quot; width=&quot;600&quot;&gt;
+				&lt;tbody&gt;
+					&lt;tr&gt;					&lt;td style=&quot;padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;&quot;&gt;
+						&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;contentbuilderBaseColumnRow&quot; style=&quot;align-items: flex-start; width: 100%; background-color:;&quot; width=&quot;100%&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr valign=&quot;top&quot;&gt;
+									&lt;td class=&quot;columnCell&quot; style=&quot;vertical-align: top;display: inline-block; float:left&quot; width=&quot;100%&quot;&gt;
+									&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;width: 100%; border-collapse: collapse; word-break:break-word;&quot;&gt;
+										&lt;tbody&gt;
+											&lt;tr&gt;
+												&lt;td&gt;
+												&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; id=&quot;contentRegion&quot; style=&quot;width:100%; border-collapse: collapse; word-break:break-word;&quot;&gt;
+													&lt;tbody&gt;
+														&lt;tr&gt;
+															&lt;td align=&quot;Center&quot;&gt;&lt;img alt=&quot;image (3)&quot; src=&quot;https://cloud-1-d--dubai.sandbox.file.force.com/file-asset-public/image_3?oid=00DH20000008lLB&quot; style=&quot;max-width: 1288.2px; width: 337px; height: 325px;&quot; title=&quot;image (3)&quot; /&gt;&lt;br /&gt;
+															&lt;br /&gt;
+															&lt;br /&gt;
+															&amp;nbsp;&lt;/td&gt;
+														&lt;/tr&gt;
+													&lt;/tbody&gt;
+												&lt;/table&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/tbody&gt;
+									&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+
+						&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;contentbuilderBaseColumnRow&quot; style=&quot;align-items: flex-start; width: 100%; background-color:;&quot; width=&quot;100%&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr valign=&quot;top&quot;&gt;
+									&lt;td class=&quot;columnCell&quot; style=&quot;vertical-align: top;display: inline-block; float:left&quot; width=&quot;100%&quot;&gt;
+									&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;width: 100%; border-collapse: collapse; word-break:break-word;&quot;&gt;
+										&lt;tbody&gt;
+											&lt;tr&gt;
+												&lt;td&gt;
+												&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; id=&quot;contentRegion&quot; style=&quot;width: 100%; border-collapse: collapse; word-break: break-word; font-size: 14px&quot;&gt;
+													&lt;tbody&gt;
+														&lt;tr&gt;
+															&lt;td style=&quot;font-family: Arial, Helvetica, sans-serif;padding-top: 10px;padding-left: 20px;&quot;&gt;
+															&lt;p&gt;Dear {!Session_Speakers.Speaker__r.Speaker_Name__c},&lt;/p&gt;
+
+															&lt;p style=&quot;line-height:23px;display:block;&quot;&gt;Thank you for your submission(s) for &lt;strong&gt;Dubai Dreamin &amp;#39;24&lt;/strong&gt;. After careful consideration of all entries, we regret to inform you that we have decided not to proceed with the below submission(s). We truly appreciate your contribution and ongoing commitment to our community.&lt;/p&gt;
+
+															&lt;p&gt;Here are the details of your approved session:&lt;/p&gt;
+
+															&lt;ul&gt;
+																&lt;li&gt;Session Title: {!Session_Speakers.Speaker__r.Speaker_Title__c}&amp;nbsp;&lt;/li&gt;
+															&lt;/ul&gt;
+
+															&lt;ul&gt;
+																&lt;li&gt;Session Description :{!Session_Speakers.Session__r.Session_Description__c}&lt;/li&gt;
+															&lt;/ul&gt;
+
+															&lt;ul&gt;
+																&lt;li&gt;Duration:{!Session_Speakers.Session__r.Session_Duration__c}&lt;/li&gt;
+															&lt;/ul&gt;
+															&lt;br /&gt;
+															&lt;strong&gt;Claim Your Discounted Registration&lt;/strong&gt;
+
+															&lt;p style=&quot;line-height:23px;display:block;&quot;&gt;We&amp;#39;re thrilled to have you join us at Dubai Dreamin&amp;rsquo;24 ! To avail yourself of a discount, kindly input the code {!Session_Speakers.Speaker__r.Voucher_Code__c} &amp;nbsp;during your registration process. For those who&amp;#39;ve already registered, don&amp;#39;t worry. Reach out to us info@dubaidreamin.com, and we&amp;#39;ll assist you in retroactively applying the discount.&lt;/p&gt;
+
+															&lt;p style=&quot;line-height:23px;display:block;&quot;&gt;Thank you for your participation and contribution to Dubai Dreamin&amp;rsquo;24 success.&lt;/p&gt;
+
+															&lt;p&gt;&lt;b&gt;Best,&lt;/b&gt;&lt;/p&gt;
+
+															&lt;p&gt;&lt;b&gt;Team Dubai Dreamin&lt;/b&gt;&lt;/p&gt;
+															&lt;/td&gt;
+														&lt;/tr&gt;
+													&lt;/tbody&gt;
+												&lt;/table&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/tbody&gt;
+									&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+			&lt;/table&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div id=&quot;&quot; style=&quot;left: 580.6px; top: 18px;&quot;&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div id=&quot;&quot; style=&quot;left: 580.6px; top: 18px;&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>EmailId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>listofSpeakers</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

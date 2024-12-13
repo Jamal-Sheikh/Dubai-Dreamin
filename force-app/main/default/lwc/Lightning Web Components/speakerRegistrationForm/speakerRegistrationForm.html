@@ -1,0 +1,505 @@
+<template>
+
+	<div class="speaker-registration-form">
+
+
+
+		<main>
+			<div class="mainContainer innerpages_container">
+
+				<div class="innerPages speakerSponsor_bg">
+
+					<div class="auto_container">
+						<template if:false={submittedThankyou}>
+							<div class="innerPages_detail">
+
+								<div class="customTittle">
+									<h1>SPEAKERS INTEREST</h1>
+									<p>At Dubai Dreamin, we curate a lineup of industry visionaries, Salesforce experts,
+										and trailblazers who are shaping the future of technology. Our speakers bring a
+										wealth of knowledge, experience, and inspiration to the stage, creating an
+										immersive and transformative experience for our attendees.</p>
+								</div>
+
+
+								<div class="customTittle">
+									<h1>Become Our Speaker</h1>
+									<p>We are allowing Experts in our Salesforce eco-system to share their invaluable
+										knowledge and experiences by having a Speaker Session of their own at Dubai
+										Dreamin, speakers can submit their session request using speaker form and will
+										be submitting their basic information such as Name, Job Title, Email, Phone and
+										a Brief introduction of themselves. Secondly they have to provide the topic of
+										their Session, Session Track, Description of the Session and additionally a
+										speaker can also add a co speaker.</p>
+										
+								</div>
+								
+
+
+
+								<div class="innerPages_form onSpeaker_page">
+									<img class="announcmentImage" src={speakerAnnouncementImage} />
+									<form onsubmit={handleSpeakerRegistration}>
+
+										<div class="ticketProcess_checkoutform">
+											<ul if:true={showFirstPage}>
+												<li>
+													<div class="customInput_col">
+														<strong>NAME</strong>
+														<div class="customInput_field">
+															<!-- <lightning-input type="text" value={speakerName}></lightning-input> -->
+															<input type="text" value={speakerName}
+																onchange={handleSpeakerNameChange} required />
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="customInput_col">
+														<strong>EMAIL</strong>
+														<div class="customInput_field">
+															<input type="email" required value={speakerEmail}
+																onchange={handleSpeakerEmailChange} />
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="customInput_col">
+														<strong>TITLE</strong>
+														<div class="customInput_field">
+															<input type="text" required value={speakerTitle}
+																onchange={handleSpeakerTitleChange} />
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="customInput_col">
+														<strong>PHONE</strong>
+														<div class="customInput_field">
+															<input type="text" required value={speakerPhone}
+																onchange={handleSpeakerPhoneChange} />
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<div class="customInput_col">
+														<strong>AGE</strong>
+														<div class="customInput_field">
+															<input type="text" required value={speakerAge}
+																onchange={handleSpeakerAgeChange} />
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="customInput_col">
+														<strong>GENDER</strong>
+														<div class="customInput_field">
+															<select id="gender" onchange={handleSpeakerGenderChange} value={speakerGender} >
+																<option value="" disabled>Choose Gender</option>
+																<template for:each={genderOptions} for:item="gender">
+																	<option key={gender.value} value={gender.value} selected={gender.isSelected}>{gender.label}</option>
+																</template>
+																
+															</select>
+														</div>
+													</div>
+													
+												</li>
+
+											
+
+												<li>
+													<div class="customInput_col">
+														<strong>PROFILE IMAGE</strong>
+														<div class="customInput_field">
+															<!-- <input type="file" 
+													
+													accept="image/*"
+													onchange={openfileUploadSpeaker}></input> -->
+															<lightning-file-upload accept={acceptedFormats}
+																onuploadfinished={handleUploadSpeakerImageFinished}>
+															</lightning-file-upload>
+															<span>{speakerFileName}</span>
+														</div>
+													</div>
+												</li>
+												
+
+
+												<li>
+													<div class="customInput_col">
+														<strong>What level is the intended audience for your talk?</strong>
+														<div class="customInput_field">
+															<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" onclick={handleDropdownClick}> 
+																<input type="text" value="Select Level of Audience" onclick={handleLevelDropdown} readonly/>
+																<ul class="multiselect" if:true={showLevelDropDown}>
+																	<template for:each={levelOptions} for:item="item">
+																		<li style="width:100%;" key={item.value}>
+																			<input style="width:auto;" type="checkbox" value={item.label} checked={item.checked} onchange={handleSessionLevelChange} /> {item.label}
+																		</li>    
+																	</template>
+																</ul>
+															</div>
+														</div>
+														<div class="slds-p-around_xx-small">
+															<template for:each={selectedSessionLevel} for:item="val">
+																<lightning-pill key={val} label={val} name={val} onremove={handleRemoveSessionLevel}></lightning-pill>
+															</template>
+														</div>
+													</div>
+													
+													
+												</li>
+
+												<li>
+													<div class="customInput_col">
+														<strong>LinkedIn URL</strong>
+														<div class="customInput_field">
+															<input type="url" value={speakerSocialMedia}
+																onchange={handleSpeakerSocialMediaChange}
+																placeholder="https://www.linkedin.com/in/xxxxx" />
+														</div>
+													</div>
+
+													<div class="socialIcon_urls">
+
+														<a href="https://www.linkedin.com/" target="__blank"><i
+																class="fa fa-linkedin"></i>
+														</a>
+
+
+													</div>
+												</li>
+
+												<li class="w-100">
+													<div class="customInput_col">
+														<strong>COMPANY /ORGANIZATION</strong>
+														<div class="customInput_field">
+															<input type="text" required value={companyName}
+																onchange={handleCompanyNameChange} />
+														</div>
+													</div>
+												</li>
+												<li class="w-100">
+													<div class="customInput_col">
+														<strong> BIO </strong>
+														<div class="customInput_field">
+															<textarea value={speakerInformation}
+																onchange={handleSpeakerInformationChange}>{speakerInformation}</textarea>
+
+														</div>
+													</div>
+												</li>
+
+
+												
+
+
+
+
+												<li class="">
+													<div class="customInput_col">
+														<div class="customInput_field">
+															<p>Want to Add Another Voice to the Session?</p>
+														</div>
+													</div>
+												</li>
+												<li class="">
+													<div class="customInput_col">
+														<div class="">
+															<template if:false={showCoSpeakerFields}>
+																<button type="reset" class="btnDefault btnSmallPink"
+																	onclick={toggleCoSpeakerFormVisibility}>Add A
+																	Co-Speaker</button>
+															</template>
+															<template if:true={showCoSpeakerFields}>
+																<button type="reset" class="btnDefault btnSmallPink"
+																	onclick={toggleCoSpeakerFormVisibility}>Remove
+																	Co-Speaker</button>
+															</template>
+														</div>
+													</div>
+												</li>
+
+
+												<template if:true={showCoSpeakerFields}>
+
+													<div class="ticketProcess_checkoutform transition">
+														<ul>
+															<li class="">
+																<div class="customInput_col">
+																	<strong> NAME </strong>
+																	<div class="customInput_field">
+																		<input type="text" required
+																			value={coSpeakerName}
+																			onchange={handleCoSpeakerNameChange} />
+																	</div>
+																</div>
+															</li>
+															<li class="">
+																<div class="customInput_col">
+																	<strong> EMAIL </strong>
+																	<div class="customInput_field">
+																		<input type="email" required
+																			value={coSpeakerEmail}
+																			onchange={handleCoSpeakerEmailChange} />
+
+																	</div>
+																</div>
+															</li>
+															<li class="">
+																<div class="customInput_col">
+																	<strong> COMPANY/ORGANIZATION </strong>
+																	<div class="customInput_field">
+																		<input type="text" required
+																			value={coSpeakerCompanyName}
+																			onchange={handleCoSpeakerCompanyNameChange} />
+																	</div>
+																</div>
+															</li>
+															<li class="">
+																<div class="customInput_col">
+																	<strong> PHONE </strong>
+																	<div class="customInput_field">
+																		<input type="text" required
+																			value={coSpeakerPhone}
+																			onchange={handleCoSpeakerPhoneChange} />
+																	</div>
+																</div>
+															</li>
+															<li class="">
+																<div class="customInput_col">
+																	<strong> PROFILE IMAGE </strong>
+																	<div class="customInput_field">
+																		<!-- <input type="file" 
+												accept="image/*"
+												 onchange={openfileUploadCoSpeaker}></input> -->
+
+																		<lightning-file-upload name="fileUploader"
+																			onuploadfinished={handleUploadCoSpeakerImageFinished}>
+																		</lightning-file-upload>
+																		<span>{coSpeakerFileName}</span>
+																	</div>
+																</div>
+															</li>
+															
+														</ul>
+													</div>
+												</template>
+												<li class="w-100">
+													<div class="formSubmitBtn">
+														<button type="button" class="btnDefault btnDefaultBlue" onclick={validateFirstPage}>NEXT
+														</button>
+													</div>
+												</li>
+											</ul>
+											<ul if:false={showFirstPage}>
+												<li class="">
+													<div class="customInput_col">
+														<strong> SESSION TITLE </strong>
+														<div class="customInput_field">
+															<input type="text" required value={sessionTitle}
+																onchange={handleSessionTitleChange} />
+
+														</div>
+													</div>
+												</li>
+
+
+
+												<li class="">
+													<div class="customInput_col">
+														<strong>SESSION TRACK</strong>
+														<div class="customInput_field">
+															<select value={sessionTrack}
+																onchange={handleSessionTrackChange}>
+																<template for:each={sessionTrackOption} for:item="item">
+																	<option key={item.value} value={item.value} selected={item.isSelected}>
+																		{item.label}</option>
+																</template>
+															</select>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="customInput_col">
+														<strong>Your intended audience? Select all that apply.</strong>
+														<div class="customInput_field">
+															<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" onclick={handleDropdownClick}>
+																<input type="text" value="Select Intended audience" onclick={handleRoleDropdown} readonly/>
+																<ul class="multiselect" if:true={showRoleDropDown}>
+																	<template for:each={speakerRoleOption} for:item="item">
+																		<li style="width:100%;" key={item.value}>
+																			<input style="width:auto;" type="checkbox" value={item.label} checked={item.checked} onchange={handleSpeakerTargetChange}  /> {item.label}
+																		</li>    
+																	</template>
+																</ul>
+															</div>
+															<div class="slds-p-around_xx-small">
+																<template for:each={selectedSpeakerRoles} for:item="val">
+																	<lightning-pill key={val} label={val} name={val} onremove={handleRemove}></lightning-pill>
+																</template>
+															</div>
+														</div>
+													</div>
+													
+												</li>
+												<li class="">
+													<div class="customInput_col">
+														<strong> ROLE </strong>
+														<div class="customInput_field">
+															<select value={coSpeakerRole}
+																onchange={handleCoSpeakerRoleChange}>
+																<template for:each={speakerRoleOption}
+																	for:item="item">
+																	<option key={item.value} selected={item.isSelected}
+																		value={item.value}>{item.label}
+																	</option>
+																</template>
+															</select>
+														</div>
+													</div>
+												</li>
+												<li class="w-100">
+													<div class="customInput_col">
+														<strong> SESSION ABSTRACT </strong>
+														<div class="customInput_field">
+															<textarea value={sessionDescription} required
+																onchange={handleSessionDescriptionChange}>{sessionDescription}</textarea>
+
+
+														</div>
+													</div>
+												</li>
+
+												<li class="w-100">
+													<div class="customInput_col">
+														<strong> Please take a moment to tell us why you think we should select your
+															Session. </strong>
+														<div class="customInput_field">
+															<textarea value={sessionSelectionDetails} required
+																onchange={handleSessionSelectionDetails}>{sessionSelectionDetails}</textarea>
+
+
+														</div>
+													</div>
+												</li>
+
+												<li class="w-100">
+													<div class="customInput_col">
+														<strong class="personal-link"> Make it personal! </strong>
+														<span class="personal-link-des">Add a Video link and tell us what are you most excited about presenting at Dubai Dreamin’</span>
+														<div class="customInput_field">
+															<input type="text" 
+																			value={sessionIntroLink}
+																			onchange={handleCoSessionIntroLink} />
+												
+
+
+														</div>
+													</div>
+												</li>
+												<li class="w-100">
+													<div class="customInput_col" style="display: -webkit-inline-box;">
+														<input type="checkbox" checked={sessionAlreadyPresented} onchange={handleSessionAlreadyPresented} style="margin-right: 10px;">
+														<strong style="width: 100%;"> Have you presented this session before? </strong>
+														
+													</div>
+												</li>
+												<li class="w-100" if:true={sessionAlreadyPresented}>
+													<div class="customInput_col">
+														<strong> Please provide the link to slides/video/session page </strong>
+														<div class="customInput_field">
+															<input type="text" required={sessionAlreadyPresented}
+																			value={sessionPresentedLink}
+																			onchange={handleSessionPresentedLink} />
+												
+
+
+														</div>
+													</div>
+												</li>
+
+												<li class="w-100" if:false={sessionAlreadyPresented}>
+													<div class="customInput_col">
+														<strong> Please provide details of your expertise in the subject you have submitted. </strong>
+														<div class="customInput_field">
+															<textarea value={sessionExpertiseOnSubject}
+																onchange={handleSessionExpertiseOnSubject} required={isExpertiseRequired}>{sessionExpertiseOnSubject}</textarea>
+
+
+														</div>
+													</div>
+												</li>
+												<li class="w-100">
+													<div class="customInput_col" style="display: inline-flex;">
+														<input type="checkbox" required checked={iPRCompliance} onchange={handleIPRCompliance} style="margin-right: 10px;">
+														<strong style="width: 100%;"> You will ensure that you and your co-speakers and anyone connected with you have all necessary licenses and consents in respect of all Intellectual Property Rights used during the event and all other goods and materials promoted, displayed or given out in relation to your session. </strong>
+													</div>
+													
+												</li>
+
+												<li class="w-100">
+													
+														<div class="customInput_col" style="display: inline-flex;">
+															<input type="checkbox" required checked={individualPresentor} onchange={handleIndividualPresentor} style="margin-right: 10px;">
+															<strong style="width: 100%;"> Please confirm that you are submitting this presentation as an individual, not on behalf of your employer. Submissions on behalf of another person or a company will not be considered. Dubai Dreamin' sessions are not sales opportunities, and no product placement or promotional content will be tolerated </strong>
+														</div>
+													
+													
+													
+												</li>
+											
+													<div class="disclaimer-container">
+														<p class="disclaimer-title" style="text-align: left;">Note</p>
+														<p class="disclaimer-text">
+															The session duration is set for 25 minutes, with an allotted 10 minutes specifically designated for Q&A. We must ensure that we finish all tasks within 40 minutes, covering entire session presentation, Q&A and Raffle.
+
+
+
+
+
+
+														</p>
+													</div>
+													
+											
+												<li class="w-100">
+													<div class="formSubmitBtn">
+														<button type="button" class="btnDefault btnDefaultBlue" onclick={moveToPreviousPage}>PREVIOUS
+														</button>
+
+														<button type="submit" class="btnDefault btnDefaultBlue">SUBMIT
+														</button>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</form>
+								</div>
+							</div>
+						</template>
+						<template if:true={submittedThankyou}>
+							<div class="innerPages_detail">
+								<div class="sponsor_section_tittle onThankPage">
+									<span><img src="../resource/dubaiImage/images/thankyou_img.png" alt="#" /></span>
+
+
+
+									<span><strong style="justify-content: center">Session Submitted Sucessfully!
+										</strong></span>
+									<a>We Will Contact You Soon.</a>
+
+									<span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+
+								</div>
+
+
+							</div>
+						</template>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</template>

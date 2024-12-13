@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:themeLayout">
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="aboutus" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+    
+    <div class="header">
+        {!v.header}
+    </div>
+    <div class="aboutus">
+        {!v.aboutus}
+    </div>
+    <div class="footer">
+        {!v.footer}
+    </div>
+   
+</aura:component>

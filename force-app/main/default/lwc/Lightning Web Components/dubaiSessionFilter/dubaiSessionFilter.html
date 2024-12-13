@@ -1,0 +1,114 @@
+<template>
+	<div class="wrapper">
+ 
+		<!-- header  -->
+		
+	   
+		   <main class="mainContainer innerpages_container"> 
+			
+			<div class="slds-grid slds-wrap">
+				<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+					<div class="filter_secion">
+				
+						<div class="filter-section">
+							<h2>Filter Sessions</h2>
+			
+							
+			
+							<div class="filter-options">
+								<div>
+									<label>Session Tracks:</label>
+									<select onchange={handleTrackChange}>
+										<option value="">-- Select Track --</option>
+										<template for:each={tracks} for:item="track">
+											<option key={track.value} value={track.value}>{track.label}</option>
+										</template>
+									</select>
+								</div>
+								<div>
+									<label>Keywords:</label>
+									<select onchange={handleKeywordChange}>
+										<option value="">-- Select Keyword --</option>
+										<template for:each={keywords} for:item="keyword">
+											<option key={keyword.value} value={keyword.value}>{keyword.label}</option>
+										</template>
+									</select>
+								</div>
+					
+								
+					
+								<div>
+									<label>Products:</label>
+									<select onchange={handleProductChange} >
+										<option value="">-- Select Product --</option>
+										<template for:each={products} for:item="product">
+											<option key={product.value} value={product.value}>{product.label}</option>
+										</template>
+									</select>
+								</div>
+								<div>
+									<label>Level:</label>
+									<select onchange={handleLevelChange}>
+										<option value="">-- Select Level --</option>
+										<template for:each={levels} for:item="level">
+											<option key={level.value} value={level.value}>{level.label}</option>
+										</template>
+									</select>
+								</div>
+							
+							</div>
+						</div>
+			
+						<div class="filter_result">
+							<button class="fetchBtn"  onclick={handleAllSearchFilter}>Fetch Sessions By Selected Fields</button>
+						</div>
+			
+						
+			
+						
+			
+			
+						
+					
+				</div>
+				</div>
+				<div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+					<div class="fetchSearch">
+						<lightning-input type="Search" label="Enter Session Name" value={searchKey} onchange={handleChange}></lightning-input>
+					<!-- <lightning-button label="Fetch Sessions" onclick={handleButtonClick}> </lightning-button> -->
+					<button class="fetchSearchBtn"  onclick={handleButtonClick}>Fetch Sessions By Keyword</button>
+					
+				</div>
+					<div class="fetchSession_info">
+						<!-- <lightning-button label="Fetch Sessions By Selected Fields"> </lightning-button> -->
+						
+						<lightning-datatable
+						key-field="id"
+						data={sessions}
+						columns={columns}
+						></lightning-datatable>
+		
+					</div>
+				</div>
+				
+			  </div>
+
+	</main>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+	
+</template>

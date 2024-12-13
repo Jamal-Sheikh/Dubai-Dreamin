@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_Track__c</fullName>
+    <externalId>false</externalId>
+    <label>Session Track</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sales Cloud</fullName>
+                <default>false</default>
+                <label>Sales Cloud</label>
+            </value>
+            <value>
+                <fullName>Data Cloud</fullName>
+                <default>false</default>
+                <label>Data Cloud</label>
+            </value>
+            <value>
+                <fullName>Service Cloud</fullName>
+                <default>false</default>
+                <label>Service Cloud</label>
+            </value>
+            <value>
+                <fullName>Experience Cloud</fullName>
+                <default>false</default>
+                <label>Experience Cloud</label>
+            </value>
+            <value>
+                <fullName>Marketing Cloud</fullName>
+                <default>false</default>
+                <label>Marketing Cloud</label>
+            </value>
+            <value>
+                <fullName>Commerce Cloud</fullName>
+                <default>false</default>
+                <label>Commerce Cloud</label>
+            </value>
+            <value>
+                <fullName>Analytics Cloud</fullName>
+                <default>false</default>
+                <label>Analytics Cloud</label>
+            </value>
+            <value>
+                <fullName>Integration Cloud</fullName>
+                <default>false</default>
+                <label>Integration Cloud</label>
+            </value>
+            <value>
+                <fullName>Manufacturing Cloud</fullName>
+                <default>false</default>
+                <label>Manufacturing Cloud</label>
+            </value>
+            <value>
+                <fullName>Financial Services Cloud</fullName>
+                <default>false</default>
+                <label>Financial Services Cloud</label>
+            </value>
+            <value>
+                <fullName>Education Services Cloud</fullName>
+                <default>false</default>
+                <label>Education Services Cloud</label>
+            </value>
+            <value>
+                <fullName>Nonprofit Cloud</fullName>
+                <default>false</default>
+                <label>Nonprofit Cloud</label>
+            </value>
+            <value>
+                <fullName>Health Cloud</fullName>
+                <default>false</default>
+                <label>Health Cloud</label>
+            </value>
+            <value>
+                <fullName>Vaccine Cloud</fullName>
+                <default>false</default>
+                <label>Vaccine Cloud</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Experience Cloud1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Experience Cloud1</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

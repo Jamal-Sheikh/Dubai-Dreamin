@@ -1,0 +1,108 @@
+<template>
+    <!-- <lightning-card  title="Speaker Details"> -->
+           
+    <!-- </lightning-card> -->
+
+
+
+    <!-- <lightning-card  title="Set Session"> -->
+  
+   
+
+    <!-- </lightning-card> -->
+
+
+
+
+
+
+
+        <div class="slds-card">
+
+
+    <div class="slds-grid slds-wrap">
+
+        <div class="slds-col" style="margin-right: 10px;">
+            <!-- First Card -->
+                <header class="slds-card__header">
+                    <h2 class="slds-text-heading_small slds-truncate"><b>Speaker Details</b></h2>
+                </header>
+                <div class="slds-card__body">
+                    <!-- Card Content -->
+                    <!-- <p>Content for Card 1 goes here.</p> -->
+                    <div class="slds-p-around_medium"  >
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Name: </b>{speakerName}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Phone: </b>{speakerPhone}</p>
+                        <!-- <p style="font-size:15px;padding-bottom:3px;"><b>Speaker LinkedIn: </b>{speakerSocialMedia}</p> -->
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Intended Audience: </b>{speakerTarget}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Role: </b>{speakerRole}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Gender: </b>{speakerGender}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Age: </b>{speakerAge}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Email: </b><a href='mailto: {speakerEmail}'>{speakerEmail}</a></p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Company Name: </b>{companyName}</p>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker LinkedIn: </b><a href={speakerSocialMedia}>{speakerSocialMedia}</a></p>
+                        <template if:true={speakerSocialMedia}>
+                        <p style="font-size:15px;padding-bottom:3px;"><b>Speaker Information: </b>{speakerInformation}</p>
+                    </template>
+                    
+                    </div>
+                    <template if:true={coSpeakerName}>
+                        <header class="slds-card__header">
+                            <h3 class="slds-text-heading_small slds-truncate"><b> Co-Speaker Details</b></h3>
+                        </header>
+                        <div class="slds-p-around_medium"  >
+                            <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker Name: </b>{coSpeakerName}</p>
+                            <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker Phone: </b>{coSpeakerCompanyName}</p>
+                            <!-- <p style="font-size:15px;padding-bottom:3px;"><b>Speaker LinkedIn: </b>{speakerSocialMedia}</p> -->
+                            <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker Role: </b>{coSpeakerRole}</p>
+                            <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker Email: </b><a href='mailto: {coSpeakerEmail}'>{coSpeakerEmail}</a></p>
+                            <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker Company Name: </b>{coSpeakerCompanyName}</p>
+                            <!-- <p style="font-size:15px;padding-bottom:3px;"><b>Co-Speaker LinkedIn: </b><a href={speakerSocialMedia}>{speakerSocialMedia}</a></p> -->
+                        </div>
+                    </template>
+                </div>
+                <!-- </div> -->
+                     <!-- </div>
+                                </div>
+                      <div class="slds-col">
+                      Second Card
+                  <div class="slds-card"> -->
+        </div>
+
+                <div class="slds-col" style="margin-right: 10px;">
+                <header class="slds-card__header">
+                    <h2 class="slds-text-heading_small slds-truncate"><b>Session Details</b></h2>
+                </header>
+                <div class="slds-card__body">
+                    <!-- Card Content -->
+                    <!-- <p>Content for Card 2 goes here.</p>
+                     -->
+
+                     <div class="slds-p-around_medium"  >    
+                        <!-- <lightning-record-view-form record-id={recordId} object-api-name="Speaker__c">     -->
+                        <p style="font-size:15px"><b>Session Title: </b>{sessionTitle}</p>
+                        <p style="font-size:15px"><b>Session Track: </b>{sessionTrack}</p>
+                        <p style="font-size:15px"><b>Session Abstract: </b>{sessionDescription}</p>
+                        <p style="font-size:15px"><b>Why Session is Chosen?: </b>{sessionSelectionDetails}</p>
+                        <p style="font-size:15px"><b>Session Expertise Details: </b>{sessionExpertiseOnSubject}</p>
+                        <p style="font-size:15px"><b>Already Presented Link: </b>{sessionIntroLink}</p>
+                        <p style="font-size:15px"><b>Session Level: </b>{sessionLevel}</p>
+                        <p style="font-size:15px"><b>Presented Link: </b>{sessionPresentedLink}</p>
+                        <p style="font-size:15px"><b>Does session already presented?: </b>{sessionAlreadyPresented}</p>
+                        <p style="font-size:15px"><b>Intellectual Property Rights Compliance: </b>{IPRCompliance}</p>
+                        <p style="font-size:15px"><b>Individual Presenter Confirmation: </b>{individualPresentor}</p>
+                        <lightning-input type="time" name="input1" value={sessionStartTime} onchange={handleStartTimeChange} label="Session Start Time" ></lightning-input>
+                        <lightning-input type="time" name="input1" value={sessionEndTime} onchange={handleEndTimeChange} label="Session End Time" ></lightning-input>
+                       <br>
+                        <lightning-button variant="brand" label="Update" title="Primary action" onclick={handleSubmission} class="slds-m-left_x-small"></lightning-button>
+                    <!-- </lightning-record-view-form> -->
+                    <br><br>
+                            <template if:true={showErrorMessage}>
+                    <p>Make sure that Session duration is 30-60 mints</p>
+                            </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

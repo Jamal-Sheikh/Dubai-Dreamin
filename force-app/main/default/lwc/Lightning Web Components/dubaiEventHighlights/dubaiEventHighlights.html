@@ -1,0 +1,81 @@
+<template>
+	<div class="event-highlight-section">
+		<div class="box-wrapper">
+			<div style='display:flex'>
+				<div class="event-location box">
+					<h3>Where</h3>
+
+
+					<div class="card-content">
+						<img src={locationIcon} />
+						<p style="margin-left: 10px">{eventCity},</p>
+						<p class="event-country">U{eventCountry}</p>
+						<p>{eventStreet}</p>
+					</div>
+
+				</div>
+
+				<div class="event-detail box">
+					<h3>When</h3>
+					<div class="card-content">
+						<img src={calenderIcon} />
+						<p style="margin-left: 10px"> <span>{formattedDate}</span></p>
+						<!-- <div><span>{dayOfWeek}</span></div>
+						<div> <span> {formattedTimeRange} </span></div> -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- <h1 class="timer-line">Join us for the Dubai Dreamin' Salesforce event! ⌛</h1>
+
+		<div class="count-down-timer" style="margin-bottom:50px">
+			<c-count-down-timer event-date-time={counterDateTime}></c-count-down-timer>
+		</div>
+		<hr> -->
+
+		<!-- <div class="event-highlights" style="margin-top:100px">
+			<div class="header">
+				<h1> <img src={pinkCircle} /> Why Join Dubai Dreamin'?</h1>
+					<p>Dubai Dreamin' is Salesforce's premier event, bringing together the largest and most vibrant
+						community of Salesforce professionals. By participating, you'll gain unparalleled access to
+						industry leaders, cutting-edge technology, and invaluable networking opportunities. Don't miss
+						your chance to connect, learn, and grow alongside fellow members of the Salesforce community at
+						this groundbreaking event.</p>
+			</div> -->
+
+
+
+
+		<!-- <div class="box-wrapper">
+				<div class="event-location box">
+					<img src={locationIcon} />
+
+					<div class="card-content">
+						<h3>Where</h3>
+						<p class="event-country">U{eventCountry}</p>
+						<p>{eventCity},</p>
+						<p>{eventStreet}</p>
+					</div>
+
+				</div>
+
+				<div class="event-detail box">
+					<img src={calenderIcon} />
+					<div class="card-content">
+						<h3>When</h3>
+						<div> <span>{formattedDate}</span></div>
+						<div><span>{dayOfWeek}</span></div>
+						<div> <span> {formattedTimeRange} </span></div>
+					</div>
+				</div>
+
+
+			</div> -->
+
+
+
+
+	
+	</div>
+</template>

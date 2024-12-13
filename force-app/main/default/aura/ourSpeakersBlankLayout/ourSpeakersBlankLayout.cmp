@@ -1,0 +1,17 @@
+<aura:component implements="forceCommunity:themeLayout">
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="ourSpeakers" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+
+    
+    <div class="header">
+        {!v.header}
+    </div>
+    <div class="ourSpeakers">
+        {!v.ourSpeakers}
+    </div>
+    <div class="">
+        {!v.footer}
+    </div>
+   
+</aura:component>

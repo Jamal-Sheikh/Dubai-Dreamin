@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>JiraConfigRecord</label>
+    <protected>false</protected>
+    <values>
+        <field>BaseUrl__c</field>
+        <value xsi:type="xsd:string">https://cloud-1.atlassian.net/</value>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:type="xsd:string">ATATT3xFfGF0fXCILaVb5iL7b1yF8a6cxVsrAuK5pAQdkGWp81lKCC-ZMVx3C4e26HICLF9jqTKmK-ds3bkILEpvJgfgeIyk4wCYvaBcGmXuhVdC8q_gPKrPJYOwl8lL_THeQHFCIZcX_JWETuZ_GNIZtT7xXXdHpUCqJwI_cRnSPRA8qRv0mSg=A25C3718</value>
+    </values>
+    <values>
+        <field>UserName__c</field>
+        <value xsi:type="xsd:string">manzar@cloud-1.co</value>
+    </values>
+</CustomMetadata>

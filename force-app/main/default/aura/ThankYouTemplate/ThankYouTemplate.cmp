@@ -1,0 +1,11 @@
+<aura:component implements="forceCommunity:themeLayout">
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="ThankYou" type="Aura.Component[]" />
+    
+    <div class="header">
+        {!v.header}
+    </div>
+    <div class="ThankYou">
+        {!v.ThankYou}
+    </div>
+</aura:component>

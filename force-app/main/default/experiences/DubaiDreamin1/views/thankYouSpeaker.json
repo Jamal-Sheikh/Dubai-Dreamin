@@ -1,0 +1,38 @@
+{
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "bc7f0d7b-c594-4d96-ab4d-d7f7f60d80c7",
+  "label" : "Thank You Speaker",
+  "regions" : [ {
+    "id" : "86abe5c3-c97f-4e5b-99e6-5299fffd8082",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "21cbd0be-97e4-4b84-8e41-8292e4aa1b9d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "27dc6b90-04a2-4602-b945-47e1a3f3a6dd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Thank You Speaker"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "2d8bef15-76ee-426c-8779-4fff2634520d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e8a492a7-4272-4613-bad6-b2cc0afcf38c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "zc1QvkI03PdedxnbUuSrCbA5BYjdCm",
+  "type" : "view",
+  "viewType" : "custom-thank-you-speaker"
+}

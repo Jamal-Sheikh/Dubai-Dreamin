@@ -1,0 +1,19 @@
+.THIS {
+    --LIGHT-BLUE: #1D9ED0;
+    --DARK-BLUE: #0C7EAA;
+    --DARK-PINK: #C4156B;
+    --LIGHT-PINK: #D95797;
+    --TEXT-COLOR: #5E6767;
+    --Bg-light: #F8F8F8;
+    --purple: #514B77;
+}
+
+.THIS .btnDefault { border-radius: 50px; padding: 12px 15px; min-width: 140px; text-align: center; 
+    background: #D95797; color: #fff; display: block;  
+    font-size: 14px;
+    transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease; margin: auto;font-family: 'PoppinsRegular';
+}

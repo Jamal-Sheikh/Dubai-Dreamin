@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Apex_Get_Sessions</name>
+        <label>Apex Get Sessions</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <actionName>SessionSelector</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Approved_or_Rejected</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>id</name>
+            <value>
+                <elementReference>Get_Session_Id.Session__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SessionSelector</nameSegment>
+        <outputParameters>
+            <assignToReference>parsedSessionEndTime</assignToReference>
+            <name>sessionEndTime</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>parsedSessionStartTime</assignToReference>
+            <name>sessionStartTime</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>parsedSessionTitle</assignToReference>
+            <name>sessionTitle</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>parsedSessionTrack</assignToReference>
+            <name>sessionTrack</name>
+        </outputParameters>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_Approved</name>
+        <label>Send Email Approved</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mrehman@cloud-1.co</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Update On You Dubai Dreamin Speaker Submission</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>ApprovedEmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_Rejected</name>
+        <label>Send Email Rejected</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mrehman@cloud-1.co</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Update On You Dubai Dreamin Speaker Submission</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>RejectedEmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>Approved_or_Rejected</name>
+        <label>Approved or Rejected</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Email__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_Approved</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>If Approved</label>
+        </rules>
+        <rules>
+            <name>if_Rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Company_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_Rejected</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>if Rejected</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Send Approved or Rejected Email to Speaker {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Approved or Rejected Email to Speaker</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Session_Id</name>
+        <label>Get Session Id</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Apex_Get_Sessions</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Speaker__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Session_Speaker__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Session__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Session_Id</targetReference>
+        </connector>
+        <object>Speaker__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>ApprovedEmailTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div class=&quot;wrapper&quot;&gt;
+        
+        &lt;!-- Main table --&gt;
+  &lt;table border=&quot;0&quot; align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#EAF3FE&quot; width=&quot;650&quot; style=&quot;margin: auto; border-radius:20px; padding:50px 25px 40px&quot;&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;!-- Child table --&gt;
+        &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;color:#0f3462; font-family: sans-serif;&quot;&gt;
+           
+          &lt;tr&gt;
+            &lt;td&gt;
+              &lt;img src=&quot;https://i.imgur.com/aK4EdrM.png&quot; height=&quot;50px&quot; width=&quot;280&quot; style=&quot;display:block; margin:auto;padding-bottom: 50px;height:auto;  &quot;&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td style=&quot;&quot;&gt;
+              &lt;p style=&quot; padding-bottom: 5px ; font-size: 14px;&quot;&gt;Dear &lt;b&gt;{!$Record.Speaker_Name__c}!&lt;/b&gt;
+              &lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;We&apos;re thrilled to inform you that you&apos;ve been selected as a speaker at Dubai Dreamin 2024. Your expertise in Salesforce and passion for sharing knowledge will be a valuable asset to the conference.
+            &lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;
+              &lt;!-- In the meantime, if you have any questions or require additional information, please feel free to contact us at mhassan@cloud-1.co. --&gt;
+              &lt;h3&gt;&lt;b&gt;Speaker Details:&lt;/b&gt;&lt;/h3&gt;
+            &lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong&gt;Speaker Name:&lt;/strong&gt; &lt;span&gt;{!$Record.Speaker_Name__c} &lt;/span&gt;&lt;/p&gt;     
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong style=&quot;&quot;&gt;Speaker Title: &lt;/strong&gt;&lt;span&gt;{!$Record.Speaker_Role__c}&lt;/span&gt;&lt;/p&gt;
+              
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong&gt;Company Name: &lt;/strong&gt;{!$Record.Company_Name__c}&lt;/p&gt;
+              &lt;h3&gt;&lt;b&gt;Session Information:&lt;/b&gt;&lt;/h3&gt;
+
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong&gt;Session Title:&lt;/strong&gt; {!parsedSessionTitle}&lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong style=&quot;&quot;&gt;Session Starts At: &lt;/strong&gt;&lt;span&gt;{!parsedSessionStartTime}&lt;/span&gt;&lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong&gt;Session Ends At: &lt;/strong&gt;{!parsedSessionEndTime}&lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong style=&quot;&quot;&gt;Session Track: &lt;/strong&gt;&lt;span&gt;{!parsedSessionTrack}&lt;/span&gt;&lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;You can now RSVP from the Dubai Dreamin site: &lt;/span&gt;&lt;a href=&quot;https://www.dubaidreamin.com/s/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; &gt;https://www.dubaidreamin.com/s/&lt;/a&gt;&lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;&lt;strong&gt;&lt;em&gt;Note: &lt;/em&gt;&lt;/strong&gt;&lt;em&gt;Speakers will be reimbursed&lt;/em&gt; &lt;em&gt;after the end of the event.&lt;/em&gt;&lt;/p&gt;
+
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          
+         
+          &lt;tr&gt;&lt;td height=&quot;20&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+
+          &lt;tr&gt;
+            &lt;td&gt;
+                &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;&lt;b&gt;Best Regards,&lt;/b&gt;&lt;/p&gt;
+                &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;Team Dubai Dreamin&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;  
+        &lt;/table&gt;
+        &lt;!-- /Child table --&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;!-- / Main table --&gt;
+
+    &lt;/div&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RejectedEmailTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;div class=&quot;wrapper&quot;&gt;
+        
+        &lt;!-- Main table --&gt;
+  &lt;table border=&quot;0&quot; align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#EAF3FE&quot; width=&quot;650&quot; style=&quot;margin: auto; border-radius:20px; padding:50px 25px 40px&quot;&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;!-- Child table --&gt;
+        &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;color:#0f3462; font-family: sans-serif;&quot;&gt;
+           
+          &lt;tr&gt;
+            &lt;td&gt;
+              &lt;img src=&quot;https://i.imgur.com/aK4EdrM.png&quot; height=&quot;50px&quot; width=&quot;280&quot; style=&quot;display:block; margin:auto;padding-bottom: 50px;height:auto;  &quot;&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td style=&quot;&quot;&gt;
+              &lt;p style=&quot; padding-bottom: 5px ; font-size: 14px;&quot;&gt;Dear &lt;b&gt;{!$Record.Speaker_Name__c}&lt;/b&gt;
+              &lt;/p&gt;
+              &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;Thank you so much for volunteering to lead a {!parsedSessionTitle} session at Dubai Dreamin 2024. We received a record number of worthy submissions this year. Due to the limited number of sessions allotted, we unfortunately were not able to accept your session proposal at this time. Should anything change in the schedule we will certainly be in touch.
+              &lt;/p&gt;
+
+              &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;We are so grateful for your generosity and encourage you to continue to submit session proposals for future events. Our Community Group Leaders are always looking for great speakers and content to share with their groups.
+
+                Thank you for everything you do for the Community. We hope to see you at Dubai Dreamin 2024.
+
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;
+                &lt;!-- &lt;p style=&quot;font-size: 14px;&quot;&gt;Thank you once again for considering sponsorship with us. We look forward to the possibility of collaborating with you creating a mutually beneficial partnership.&lt;/p&gt; --&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+
+          &lt;tr&gt;
+            &lt;td&gt;
+                &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;&lt;b&gt;Best Regards,&lt;/b&gt;&lt;/p&gt;
+                &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;Team Dubai Dreamin&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;  
+        &lt;/table&gt;
+        &lt;!-- /Child table --&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;!-- / Main table --&gt;
+
+    &lt;/div&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>parsedSessionEndTime</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>parsedSessionStartTime</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>parsedSessionTitle</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>parsedSessionTrack</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

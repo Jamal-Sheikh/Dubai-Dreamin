@@ -1,0 +1,297 @@
+<template>
+
+	<template if:true={selectedEventId}>
+		<div class="Sessions ">
+			<template if:true={threesessionInformation}>
+				<div class="sectionSession">
+					<h1 style="text-align:center; margin: 00px auto 30px"> {sessionLabel} </h1>
+
+					<lightning-layout multiple-rows>
+						<template for:each={threesessionInformation} for:item="session">
+							<lightning-layout-item size="12" small-device-size="12" medium-device-size="6"
+								large-device-size="6" padding="horizontal-small" key={session.sessionTitle}>
+								<div class="session-container">
+									<div class="session-date">
+
+										<span style="font-size:18px">
+										<lightning-formatted-date-time value={session.sessionStartDate} year="2-digit"
+											month="short" day="2-digit" weekday="short" time-zone="UTC">
+										</lightning-formatted-date-time>
+									
+										</span>
+
+
+
+										<lightning-formatted-time value={session.sessionStartTime}>
+										</lightning-formatted-time>
+									</div>
+									<div class="session-intro">
+										<h3>{session.sessionTitle}</h3>
+										<div class="readbutton">
+											<button onclick={openModal} data-sessionid={session.sessionTitle} class="readbutton">
+										View Details
+										</button>
+										</div>
+
+									</div>
+
+
+								</div>
+
+							</lightning-layout-item>
+						</template>
+					</lightning-layout>
+					<button class="view-all" onclick={handleViewAllClick}> {buttonLabel} {allSessionsLabel}</button>
+				</div>
+			</template>
+		</div>
+
+
+		<!-- individual sessions modal starts here on click of 'view details' button-->
+	<!-- 	<c-popup-modal show-modal={showModal} onclosemodal={closeModal}>
+			<div class="header">
+				<div class="session-box">
+					<div class="card_info">
+						<div class="header">
+							<h2>{sessionTitle}</h2>
+						</div>
+						<div class="inner-card">
+							<lightning-formatted-rich-text value={sessionDescription}>
+							</lightning-formatted-rich-text>
+							<div class="card-footer">
+								<div class="date">
+									<span>Date</span>
+									<template if:true={sessionStartDate}>
+										<p>
+											<lightning-formatted-date-time value={sessionStartDate} year="2-digit"
+												month="short" day="2-digit" weekday="short" time-zone="UTC">
+											</lightning-formatted-date-time>
+
+											-
+											<lightning-formatted-date-time value={sessionEndDate} time-zone="UTC">
+											</lightning-formatted-date-time>
+										</p>
+									</template>
+									<template if:false={sessionStartDate}>N/A</template>
+								</div>
+
+								<div class="time">
+									<span>Time</span>
+									<template if:true={sessionStartTime}>
+										<p> {sessionStartTime} <span style="margin: 0 3px">-</span>{sessionEndTime}
+										</p>
+									</template>
+									<template if:false={sessionStartTime}>
+										<p> N/A</p>
+									</template>
+								</div>
+
+
+
+								<div class="duration">
+									<span>Duration</span>
+									<template if:true={sessionDuration}>
+
+										<p>{sessionDuration}</p>
+									</template>
+									<template if:false={sessionDuration}>
+
+										<p>N/A</p>
+									</template>
+
+								</div>
+
+
+
+							</div>
+
+							<div class="session-speakers ">
+								<template for:each={speakerNames} for:item="speaker">
+
+									<div key={speaker.speakerName} class="">
+										<img src={speaker.speakerImage} alt={speaker.speakerName} class="speaker-image" />
+										<p>{speaker.speakerName}</p>
+									</div>
+								</template>
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</c-popup-modal> -->
+		<!-- individual sessions modal ends here on click of 'view details' button -->
+
+
+
+
+		<!-- ---- All sessions list starts on click of 'View All' button----- -->
+		<template if:true={showAllSession}>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+			<div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+						<button class="slds-button sldClose slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCloseModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" class="slds-icon-standard-textbox"></lightning-icon>
+                            </button>
+						<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{allSessionsLabel} </h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium sessionModel">
+
+						<div data-section="Sessions" class="session-info">
+
+							<lightning-layout multiple-rows>
+
+								<template for:each={allsessionInformation} for:item="session">
+									<lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+										large-device-size="12" padding="horizontal-small" key={session.sessionTitle}>
+										<div class="session-container">
+											<div class="session-date">
+
+												<lightning-formatted-date-time value={session.sessionStartDate}>
+												</lightning-formatted-date-time>
+
+												<lightning-formatted-time value={session.sessionStartTime}>
+												</lightning-formatted-time>
+											</div>
+											<div class="session-intro">
+												<h3>{session.sessionTitle}</h3>
+												<div class="readbutton">
+													<button	onclick={toggleExpansion} data-sessionid={session.sessionTitle} class="readbutton">
+													View Details
+													</button>
+												</div>
+											</div>
+
+
+										</div>
+
+
+
+
+									</lightning-layout-item>
+									<div class={session.contentClass} key={session.sessionTitle}>
+											<div class="header">
+				<div class="session-box">
+					<div class="card_info">
+						
+						<div class="inner-card">
+							<lightning-formatted-rich-text value={session.sessionDescription}>
+							</lightning-formatted-rich-text>
+							<div class="card-footer">
+								<div class="date">
+									<span>Date</span>
+									<template if:true={session.sessionStartDate}>
+										<p>
+											<lightning-formatted-date-time value={session.sessionStartDate} year="2-digit"
+												month="short" day="2-digit" weekday="short" time-zone="UTC">
+											</lightning-formatted-date-time>
+
+											-
+											<lightning-formatted-date-time value={session.sessionEndDate} time-zone="UTC">
+											</lightning-formatted-date-time>
+										</p>
+									</template>
+									<template if:false={session.sessionStartDate}>N/A</template>
+								</div>
+
+								<div class="time">
+									<span>Time</span>
+									<template if:true={session.sessionStartTime}>
+										<p> {session.sessionStartTime} <span style="margin: 0 3px">-</span>{session.sessionEndTime}
+										</p>
+									</template>
+									<template if:false={session.sessionStartTime}>
+										<p> N/A</p>
+									</template>
+								</div>
+
+
+
+								<div class="duration">
+									<span>Duration</span>
+									<template if:true={session.sessionDuration}>
+
+										<p>{session.sessionDuration}</p>
+									</template>
+									<template if:false={session.sessionDuration}>
+
+										<p>N/A</p>
+									</template>
+
+								</div>
+
+
+
+							</div>
+							<template if:true={session.lstOfSpeakers}>
+									
+								<h4>Speakers</h4>
+							<div class="session-speakers ">
+								<template for:each={session.lstOfSpeakers} for:item="speaker">
+
+									<div key={speaker.speakerName} class="">
+										<img src={speaker.speakerImage} alt={speaker.speakerName} class="speaker-image" />
+										<p>{speaker.speakerName}</p>
+									</div>
+								</template>
+							</div>
+								</template>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+									</div>
+
+								</template>
+
+
+
+							</lightning-layout>
+
+							<!-- <div class="card">
+										<div class="card_info">
+											<h3 class="heading">{session.sessionTitle}</h3>
+											<lightning-formatted-rich-text value={session.sessionDescription}>
+											</lightning-formatted-rich-text>
+											<p><strong>Start Date:</strong> {session.sessionStartDate}</p>
+											<p><strong>End Date:</strong> {session.sessionEndDate}</p>
+											<p><strong>Start Time: </strong> {session.sessionStartTime}</p>
+											<p><strong>End Time:</strong> {session.sessionEndTime}</p>
+											<p><strong>Total Duration:</strong> {session.sessionDuration}</p>
+											
+											<div class="c-sessionsection_sessionsection">
+												<template for:each={session.lstOfSpeakers} for:item="speaker">
+													<div class="sessionSpeaker" key={speaker.Id}>
+														<strong>Speaker Name: <b> {speaker.speakerName}</b></strong>
+														 <span><img src={speaker.speakerImage}></span>
+													</div>
+												</template>
+												
+											</div>
+											
+										
+										</div>
+									</div> -->
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</template>
+		<!-- ---- All sessions list ends s on click of 'View All' button ----- -->
+
+	</template>
+
+
+
+
+</template>

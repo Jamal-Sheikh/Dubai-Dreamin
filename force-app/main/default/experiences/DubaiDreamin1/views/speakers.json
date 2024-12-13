@@ -1,0 +1,60 @@
+{
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "5f991273-e6ec-4b3d-8d34-e79672c3de0f",
+  "label" : "Speakers",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "b7276b12-e7db-4a22-813f-87482cac0bd0",
+          "columns" : [ {
+            "UUID" : "45f02582-e78f-4fef-9c59-2ddbcd501bb2",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "b7276b12-e7db-4a22-813f-87482cac0bd0",
+      "regions" : [ {
+        "id" : "45f02582-e78f-4fef-9c59-2ddbcd501bb2",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "dae6bda3-3c06-4a68-bc14-1930ab0cc22f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Speakers"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b4d86360-6213-4513-a7d1-f7dabf4b62e4",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f3794833-e5e9-4a8a-91f1-ec08b77fb212",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "j1wUB86d8TYHRRle3CRVMvVnsdtBmK",
+  "type" : "view",
+  "viewType" : "custom-speakers"
+}

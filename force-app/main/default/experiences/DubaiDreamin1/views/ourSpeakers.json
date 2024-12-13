@@ -1,0 +1,60 @@
+{
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "c8f384c3-bb5a-4302-83f6-cda43f246352",
+  "label" : "Our Speakers",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "768d8072-c3d4-4567-9110-0097e1cbcf5b",
+          "columns" : [ {
+            "UUID" : "587ab53d-cf26-49d3-b2eb-37db13155413",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "768d8072-c3d4-4567-9110-0097e1cbcf5b",
+      "regions" : [ {
+        "id" : "587ab53d-cf26-49d3-b2eb-37db13155413",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "57040d9c-84dc-44be-991d-0a3db4257a3c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/style.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/responsive.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/aos.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/font-awesome.min.css\" />",
+        "description" : "",
+        "title" : "Our Speakers"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "527b5c0c-d32e-448c-a569-fbe7e4d02df0",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "50aceea9-073e-4cc0-8889-203071f47b3c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "OB7Hupjj2rlIbKMMhPFxuDUw0WRZiT",
+  "type" : "view",
+  "viewType" : "custom-our-speakers"
+}

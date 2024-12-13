@@ -1,0 +1,20 @@
+<aura:component implements="forceCommunity:themeLayout">
+    <aura:attribute name="Header" type="Aura.Component[]" />
+    <aura:attribute name="Sponsors" type="Aura.Component[]" />
+    <aura:attribute name="SponsorsLogos" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+
+    <div class="Header">
+        {!v.Header}
+    </div>
+    <div class="sponsors">
+        {!v.Sponsors}
+    </div>
+     <div class="SponsorsLogos">
+        {!v.SponsorsLogos}
+    </div>
+     <div class="">
+        {!v.footer}
+    </div>
+   
+</aura:component>

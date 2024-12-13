@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:themeLayout" access="global">
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="thankyouAttendee" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+
+    <div class="header">
+        {!v.header}
+    </div>
+    <div class="thankyouAttendee">
+        {!v.thankyouAttendee}
+    </div>
+     <div class="footer">
+        {!v.footer}
+    </div>
+   
+</aura:component>

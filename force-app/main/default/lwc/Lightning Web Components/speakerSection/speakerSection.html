@@ -1,0 +1,200 @@
+<template>
+	<div class="wrapper">
+ 
+		<!-- header  -->
+		
+	   <main>
+		   <div class="mainContainer innerpages_container"> 
+
+			   <div class="innerPages speakerSponsor_bg">
+				   
+
+				<div class="auto_container">
+
+					   <div class="innerPages_detail">
+
+						   
+
+						   <div class="speakerTille_new">
+							   <h2>Our Speakers</h2>
+						   </div>
+
+						   <div class="filterSection">
+							<div class="filterNav">
+								<input type="text" placeholder="Search.."  value={searchKey} onchange={handleChange} />
+								<span class="filterIcon"><lightning-icon size="x-small" icon-name="utility:filterList" alternative-text="Search Filter" title="Searching" onclick={handleShowFilterIcon} ></lightning-icon></span>
+								<template if:true={errorDisplay}>
+									<!-- <h1>No result found</h1> -->
+								</template>
+								
+								<div class="fetchSearch">
+								
+							</div>
+							</div>
+							<template if:true={showFilterOptions}>
+							<div class="filterSection_info">
+								<div class="filterSection_info_inner">
+									<div class="closeIcon">
+									<lightning-icon icon-name="standard:first_non_empty" alternative-text="Search Filter" title="Close" size="x-small" onclick={handleFilterHide}></lightning-icon>
+								</div>
+									<h6 onclick={handleFilterHide}>Filters</h6>
+											
+									<div class="filtersCategory">
+										
+
+										<div class="">
+											<strong>Level  <lightning-icon size="x-small" icon-name="utility:down" onclick={handleShowLevel}></lightning-icon></strong>
+											
+											<div class="ulList">
+											<template if:true={showlevelOptions}>
+												<template for:each={levels} for:item="level">
+													<lightning-input
+														
+														key={level.value}
+														label={level.label}
+														value={level.value}
+														type="checkbox"
+														checked={level.checked} 
+														onchange={handleLevelChange}></lightning-input>
+												</template>
+											</template>
+										</div>
+												
+										</div>
+
+										<div class="">
+											<strong>Products  <lightning-icon size="x-small" icon-name="utility:down" onclick={handleShowProductOptions}></lightning-icon></strong>
+											<div class="ulList">
+											<template if:true={showProductOptions}>
+											<template for:each={products} for:item="product">
+												<lightning-input
+													
+													key={product.value}
+													label={product.label}
+													value={product.value}
+													type="checkbox"
+													checked={product.checked}
+													onchange={handleProductChange}></lightning-input>
+											</template>
+											</template>
+										</div>
+												
+										</div>
+
+
+										<div class="">
+											<strong>Session Tracks  <lightning-icon size="x-small" icon-name="utility:down" onclick={handleShowSessionTrackOptions}></lightning-icon></strong>
+											<div class="ulList">
+											<template if:true={showSessionTrackOptions}>
+										<template for:each={tracks} for:item="track">
+											<lightning-input
+												
+												key={track.value}
+												label={track.label}
+												value={track.value}
+												type="checkbox"
+												checked={track.checked}
+												onchange={handleTrackChange}></lightning-input>
+										</template>
+											</template>
+										</div>
+										</div>
+
+									<div class="">
+										<strong>keywords  <lightning-icon size="x-small" icon-name="utility:down"  onclick={handleShowKeywordOption}></lightning-icon></strong>
+										
+										<div class="ulList">
+										<template if:true={showKeywordOptions}>
+											<template for:each={keywords} for:item="keyword">
+												<lightning-input
+													
+													key={keyword.value}
+													label={keyword.label}
+													value={keyword.value}
+													type="checkbox"
+													checked={keyword.checked}
+													onchange={handleKeywordChange}></lightning-input>
+											</template>
+										</template>
+									</div>
+									</div>
+										
+										
+										
+									</div>
+
+									<div class="fetchSearch">
+										
+										<button class="fetchSearchBtn"  onclick={handleOnlyFilteredSession}>Fetch Sessions By Selected Fields</button>
+									</div>
+								</div>
+							</div>
+							
+	
+						</template>
+						   </div>
+
+						   <div class="speakers_list">
+							   
+
+								<lightning-layout multiple-rows>
+
+
+										
+												<div class="styling-li">
+													<template if:false={hasSessions}>
+														<h1>No result found</h1>
+													  </template>
+													  <template if:true={hasSessions}>
+														<template for:each={sessions} for:item="session">
+														  <div class="speaker_col_info" key={session.Id}>
+															<div class="speaker_col_info_avtar">
+															  <a class="avatarPic">
+																<template if:false={session.speakerImage}>
+																  <img src={profilePlaceholder} class="adjust" alt="Speaker Profile Image" />
+																</template>
+																<template if:true={session.speakerImage}>
+																  <img src={session.speakerImage} class="adjust" alt="Speaker Profile Image" />
+																</template>
+															  </a>
+															  <a class="speakerTittleT">{session.speakerName}</a>
+															  <p class="speakerDesc">{session.sessionTitle}</p>
+															</div>
+														  </div>
+														</template>
+													  </template>
+													  
+													  
+										
+							
+						</div>
+
+											
+						</lightning-layout>
+
+							   
+						   </div>
+						   
+
+						   <div class="aboutUsTittle onspeakerPage">
+							   <span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+
+						   </div>
+					   </div>
+
+					</div>
+				   </div>
+			   <!-- </div>  -->
+
+		   </div>
+
+		   
+	   </main>
+
+
+	
+
+   </div>
+
+	
+</template>

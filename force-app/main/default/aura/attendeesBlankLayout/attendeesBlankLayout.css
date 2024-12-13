@@ -1,0 +1,35 @@
+.THIS{
+	--primary-colour: #81ecec;
+	--secondary-colour: #00a8ff;
+    --h1: #273c75;
+}
+.THIS .section{
+    padding:60px 25px;
+    
+}
+.THIS h1{
+    font-size:30px;
+    color:var(--h1);
+}
+.THIS h2{
+    font-size:25px;
+}
+.THIS h3{
+    font-size:20px;
+}
+.THIS p, .THIS span{
+    font-size:14px;
+}
+.THIS .primary-button{
+    background:var(--primary-colour);
+    padding:10px 32px;
+    border:none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight:400;
+    font-size:16px;
+}
+.THIS .primary-button:hover{
+    background:var(--secondary-colour);
+    
+}

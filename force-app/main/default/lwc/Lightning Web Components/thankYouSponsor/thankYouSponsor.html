@@ -1,0 +1,37 @@
+<template>
+    <div>
+        <main>
+            <div class="mainContainer innerpages_container"> 
+
+                <div class="innerPages speakerSponsor_bg">
+                    <div class="auto_container">
+                        
+                        
+                            <div class="innerPages_detail">
+                                <div class="sponsor_section_tittle onThankPage" >
+                                    <span><img src="../resource/dubaiImage/images/thankyou_img.png" alt="#" /></span>
+        
+                                    
+                                    <span if:true={isSponsor}><strong style="justify-content: center">Thank You for your interest as our Sponsor! </strong></span>
+                                    <span if:true={isSpeaker}><strong style="justify-content: center">Thank you for registering as a speaker! We're excited to have you join us. You will receive a confirmation email shortly with more information about your session. </strong></span>
+                                    <span if:true={isAttendee}><strong style="justify-content: center">Thank you for registering! We look forward to seeing you at the event. An email confirmation with further details has been sent to your inbox. If you have any questions, feel free to contact us at <a href="mailto:info@dubaidreamin.com">info@dubaidreamin.com</a> </strong></span>
+                                    <span if:true={isAttendeeAlreadyRegistered}><strong style="justify-content: center">Your registration for Dubai Dreamin is already completed, and we are looking forward to see you at the event. </strong></span>
+
+                                    <span class="contact-soon" if:true={showContactSoon}>We Will Contact You Soon.</span>
+        
+                                    <span class="footer-logo"><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+        
+                                </div>  
+        
+        
+                            </div>
+                       
+                        </div>
+                    </div>
+ 
+
+
+            </div>
+        </main>
+    </div>
+</template>

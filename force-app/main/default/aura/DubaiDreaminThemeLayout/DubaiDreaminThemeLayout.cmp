@@ -1,0 +1,45 @@
+<aura:component implements="forceCommunity:themeLayout">
+
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+    <aura:attribute name="SpeakerRegistration" type="Aura.Component[]" />
+    <aura:attribute name="RSVP" type="Aura.Component[]" />
+    <aura:attribute name="HighLights" type="Aura.Component[]" />
+    <aura:attribute name="BannerImage" type="Aura.Component[]" />
+    <aura:attribute name="FAQ" type="Aura.Component[]" />
+    <aura:attribute name="Speakers" type="Aura.Component[]" />
+    <aura:attribute name="contactUs" type="Aura.Component[]" />
+    <aura:attribute name="Sponsors" type="Aura.Component[]" />
+    <div class="header">
+        {!v.header}
+    </div>
+    <div class="bannerImage">
+        {!v.BannerImage}
+    </div>
+    <div class="hightLights">
+        {!v.HighLights}
+    </div>
+    <div class="rSVP">
+        {!v.RSVP}
+    </div>
+    <div class="speakerRegistration">
+        {!v.SpeakerRegistration}
+    </div>
+    <div class="speakers">
+        {!v.Speakers}
+    </div>
+
+    <div class="fAQ">
+        {!v.FAQ}
+    </div>
+   
+    <div class="contactUs">
+        {!v.contactUs}
+    </div>
+    <div class="sponsors">
+        {!v.Sponsors}
+    </div>
+    <div class="footer">
+        {!v.footer}
+    </div>
+</aura:component>

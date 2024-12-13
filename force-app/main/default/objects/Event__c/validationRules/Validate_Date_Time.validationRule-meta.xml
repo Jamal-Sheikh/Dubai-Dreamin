@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Date_Time</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+AND(NOT(ISBLANK( Event_Start_Date_and_Time__c )),Event_Start_Date_and_Time__c &lt;= NOW()),
+AND (NOT(ISBLANK( Event_End_Date_and_Time__c )), Event_End_Date_and_Time__c &lt;= NOW()),
+AND (Event_Start_Date_and_Time__c &gt; Event_End_Date_and_Time__c)
+)</errorConditionFormula>
+    <errorMessage>Please enter valid date &amp; time.</errorMessage>
+</ValidationRule>

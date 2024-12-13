@@ -1,0 +1,11 @@
+<template>
+    <div class="expandable-container">
+        <div class="header" onclick={toggleExpansion}>
+            <span>{questionHeader}</span>
+            <span><img src="../resource/dubaiImage/images/faq_icon.png" alt="#"></span>
+        </div>
+        <div class={contentClass}>
+              <p >  <lightning-formatted-rich-text value={answerBody}></lightning-formatted-rich-text>     </p>         
+        </div>
+    </div>
+</template>

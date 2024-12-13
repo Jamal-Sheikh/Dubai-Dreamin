@@ -1,0 +1,234 @@
+.sponsor-registration-form .input-column {
+    display: inline-block;
+    width: 30%; /* Adjust as needed */
+    margin-right: 3.33%; /* Adjust spacing between columns */
+    vertical-align: top; /* Align columns to the top */
+    
+}
+@media screen and (max-width: 600px) {
+    .speaker-registration-form .input-column {
+        /* display: block;
+        width: auto;
+        margin-right: 0; */
+
+        /* display: inline-block; */
+        width: 90%; /* Adjust as needed */
+        /* margin-right: 3.33%; Adjust spacing between columns */
+        /* vertical-align: top; Align columns to the top */
+    }
+}
+
+
+.rsvpbutton  button {  font-size: 12px; border-radius: 6px; padding: 12px 25px; 
+    text-align: center;max-width: 175px;
+     /* margin: auto; */
+      display: block;  
+    color: #fff;
+      margin-top: 10px; 
+     margin-bottom: 30px; 
+      border:0px;
+    /* background-color: var(--DARK-PINK) !important; */
+    background-color: #1d96dd;
+
+}
+.registerbutton  button {  font-size: 12px; border-radius: 6px; padding: 12px 25px; 
+    text-align: center;max-width: 175px; margin: auto; display: block;  
+    color: #fff; margin-top: 20px; margin-bottom: 30px; border:0px;
+    /* background-color: var(--DARK-PINK) !important; */
+    /* background-color: #8c7ae6; */
+    /* min-width: 120px;
+    max-width: 1200px; */
+    padding-left:3rem;padding-right:3rem;border-radius:0%;background-color:black;
+
+}
+    
+    abbr{
+        display: none !important;
+    }
+
+
+.add-session{
+    width: 21%;
+    display: flex;
+    justify-content: space-between;
+}
+.add-session .btn{
+    border: none !important;
+    font-size: 17px;
+    background: none;
+}
+.add-session span{
+        font-size: 17px;
+}
+
+
+
+.container {
+    margin-top: 20px !important;
+    padding: 3% !important;
+    /* height: 20px; */
+    position: relative;
+  }
+.center {
+ 
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .border{
+    border: 1px solid black;
+  }
+
+  .section{
+    /* padding: 30px; */
+    position: relative;
+    /* background: white; */
+  }
+
+  /* .section:before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    border-top: 80px solid white;
+    border-left: 80px solid rgb(240, 235, 101);
+    width: 0;
+}
+   */
+
+  .no-border {
+    padding-top: 2%;
+    border: none !important; /* Remove the border */
+    outline: none !important; /* Remove the outline */
+    border-radius: 0% !important;
+    border-bottom: 3px solid black  !important;  /* Optionally, you can add additional styling here */
+}
+
+.no-border:focus{
+    outline: 0 !important;
+    border-bottom: 2px solid black  !important;
+    color: black !important;
+    box-shadow: none !important;
+
+}
+.fat-fonts{
+    
+    font-weight: 900;
+    
+}
+.slds-form-element__label{
+
+    margin-top: 20px;
+}
+
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.checkbox-label {
+    margin-left: 10px; /* Adjust spacing between checkbox and text */
+}
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {} */
+
+
+
+
+
+
+/* --------------- */
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+/* .file-upload{
+    background-color: yellow;
+} */
+
+.modal-content {
+    background-color: #fff;
+  
+     /* max-width: 80%;
+    max-height: 80%; */
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+.modal-body{
+    background-image: url("https://artsmileybiz.com/store/wp-content/uploads/sites/9/2023/04/dubai_skyline_silhouette_with_camel_and_sun_art_prints_artsmileybiz-600x400.pnghttps://img.freepik.com/premium-photo/abstract-neon-dubai-city-skyscrapers-artwork-design-digital-art_932772-1432.jpg");
+
+}
+
+.modal-header,
+.modal-footer {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-header{
+    color: white;
+    font-size: 1.6rem;
+    background-color: var(--LIGHT-BLUE);
+
+}
+.modal-footer {
+    background: var(--Bg-light);
+
+}
+.scrollable-content {
+    max-height: calc(100% - 100px); /* Adjust this value according to your modal header and footer heights */
+  
+    padding: 20px;
+   
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+.customInput_field select { width: 100%; border-bottom: 2px solid #000; padding: 0px 0px 10px; color: #000; font-size: 13px; -webkit-appearance: none;  background: url(../images/plugon.png) 97% center no-repeat; background-size: 12px; cursor: pointer; max-height: 31px; min-height: 31px;}
+
+.innerPages_form .btnDefault { transform: translateY(-6px); background-color: #1D9ED0; border-radius: 50px; min-width: 300px; 
+    padding: 18px; position: relative;}
+
+    .btnDefault:hover {
+        background: #de2c85 !important;
+    }

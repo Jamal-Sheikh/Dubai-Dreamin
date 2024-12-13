@@ -1,0 +1,11 @@
+{
+  "cmsSettings" : { },
+  "currentThemeId" : "fece7c25-3711-4e73-8a9c-3d36f50836db",
+  "headMarkup" : "<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/style.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/responsive.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/aos.css\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiCss/css/font-awesome.min.css\" />\n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/DubaiDreaminLogo.png\" /> \n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/ComingSoonSpeakers.png\" /> \n                                                                            \n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/dubaiImage/images/formBtn_shadow.png\" />\n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/dubaiImage/images/speakerSponsor_bg.png\" />\n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/dubaiImage/images/plugon.png\" />\n<link rel=\"stylesheet\" href=\"/dubaidreamin/c/resource/dubaiImage/images/bannerLogo.png\" />\n<link rel=\"stylesheet\" href=\"/sfsites/c/resource/dubaiImage/images/bannerLogo.png\" />\n\n\n\n\n<link rel=\"shortcut icon\" href=\"/sfsites/c/resource/FavIcon.ico\" type=\"image/x-icon\" />",
+  "id" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "isLockerServiceEnabled" : true,
+  "isRelaxedCSPLevel" : true,
+  "label" : "main",
+  "templateName" : "Service Community Template",
+  "type" : "appPage"
+}

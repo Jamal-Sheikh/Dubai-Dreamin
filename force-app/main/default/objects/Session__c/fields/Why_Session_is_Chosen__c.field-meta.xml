@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Why_Session_is_Chosen__c</fullName>
+    <description>Please take a moment to tell us why you think we should select your
+presentation.</description>
+    <externalId>false</externalId>
+    <label>Why Session is Chosen?</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

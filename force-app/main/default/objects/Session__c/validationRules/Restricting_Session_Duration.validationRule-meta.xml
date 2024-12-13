@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restricting_Session_Duration</fullName>
+    <active>true</active>
+    <errorConditionFormula>(( Session_End_Time__c -  Session_Start_Time__c ) &lt; 1800000) ||
+(( Session_End_Time__c -  Session_Start_Time__c ) &gt; 3600000)</errorConditionFormula>
+    <errorMessage>Please keep Session Duration between 30 minutes and 1 hour</errorMessage>
+</ValidationRule>

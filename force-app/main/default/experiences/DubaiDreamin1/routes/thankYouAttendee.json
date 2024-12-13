@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "34c42f50-4f02-4f10-9806-e97d5c6b59f2",
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "configurationTags" : [ ],
+  "devName" : "Thank_you_Attendee__c",
+  "id" : "76e1e006-2df0-47b5-852c-f89d99de3038",
+  "label" : "Thank You Attendee",
+  "pageAccess" : "Public",
+  "routeType" : "custom-thank-you-attendee",
+  "type" : "route",
+  "urlPrefix" : "thank-you-attendee"
+}

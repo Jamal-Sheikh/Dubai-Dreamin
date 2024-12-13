@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_To_Speaker</name>
+        <label>Send Email To Speaker</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_Speaker.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>mrehman@cloud-1.co</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Dubai Dreamin &apos;24 Session Submission</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>SendSessionSubmitEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Speaker Submission Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Speaker Submission Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Session</name>
+        <label>Get Session</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_To_Speaker</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Session__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Session__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Speaker</name>
+        <label>Get Speaker</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Session</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Speaker__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Speaker__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Speaker</targetReference>
+        </connector>
+        <object>Session_Speaker__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>SendSessionSubmitEmail</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div class=&quot;wrapper&quot;&gt;
+        
+      &lt;!-- Main table --&gt;
+&lt;table border=&quot;0&quot; align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#EAF3FE&quot; width=&quot;650&quot; style=&quot;margin: auto; border-radius:20px; padding:50px 25px 40px&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;!-- Child table --&gt;
+      &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;color:#0f3462; font-family: sans-serif;&quot;&gt;
+         
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img src=&quot;https://i.imgur.com/aK4EdrM.png&quot; height=&quot;50px&quot; width=&quot;280&quot; style=&quot;display:block; margin:auto;padding-bottom: 50px;height:auto;  &quot;&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;&quot;&gt;
+            &lt;p style=&quot; padding-bottom: 5px ; font-size: 14px;&quot;&gt;Dear &lt;b&gt;{!Get_Speaker.Speaker_Name__c}&lt;/b&gt;
+            &lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;We extend our gratitude for your submission to the Dubai Dreamin &apos;24 session proposal! Your proposal has been successfully received.
+            &lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;Your session proposal status will be communicated to you around August 5th 2024 once the review process is finalized.
+            &lt;/p&gt;
+
+            &lt;p style=&quot; font-size: 14px; padding:0px&quot;&gt;
+              &lt;strong&gt;Session Proposal Details:&lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;Session Title: &lt;span&gt;{!Get_Session.Session_Title__c} &lt;/span&gt;&lt;/p&gt;     
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;Session Abstract: &lt;span&gt;{!Get_Session.Session_Description__c}&lt;/span&gt;&lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;In the meantime, if you have any questions or require additional information, please feel free to contact us at &lt;a href=&quot;info@dubaidreamin.com&quot;&gt;info@dubaidreamin.com&lt;/a&gt;.&lt;/p&gt;
+            &lt;p style=&quot; font-size: 14px; padding:0px;&quot;&gt;Thank you once again for considering us. We look forward to the possibility of collaborating with you and creating a mutually beneficial partnership.&lt;/p&gt;
+
+        
+          &lt;/td&gt;
+        &lt;/tr&gt;
+                 &lt;tr&gt;
+          &lt;td&gt;
+              &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;&lt;b&gt;Best Regards,&lt;/b&gt;&lt;/p&gt;
+              &lt;p style=&quot;font-size: 14px; padding:0px&quot;&gt;Team Dubai Dreamin&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;  
+      &lt;/table&gt;
+      &lt;!-- /Child table --&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- / Main table --&gt;
+
+  &lt;/div&gt;</text>
+    </textTemplates>
+</Flow>

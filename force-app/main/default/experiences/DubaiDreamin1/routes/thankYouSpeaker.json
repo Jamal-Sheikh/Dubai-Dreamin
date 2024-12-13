@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "bc7f0d7b-c594-4d96-ab4d-d7f7f60d80c7",
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "configurationTags" : [ ],
+  "devName" : "thankYouSpeaker__c",
+  "id" : "0dbcd861-46ad-4e86-ae8a-61ebf4cd2806",
+  "label" : "Thank You Speaker",
+  "pageAccess" : "Public",
+  "routeType" : "custom-thank-you-speaker",
+  "type" : "route",
+  "urlPrefix" : "thank-you-speaker"
+}

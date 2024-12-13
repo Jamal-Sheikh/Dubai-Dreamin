@@ -1,0 +1,104 @@
+<template>
+    <!-- <footer class="footer">
+        <div class="footer-container slds-grid slds-wrap">
+            <div class="companyLogo">
+                    
+                <template if:true={linksLoaded}>
+                   <img src={companyLogo} />
+                	<div class="socialInfo">
+					<template for:each={socialLinks} for:item="link">
+						<div key={link.socialMediaIcon} class="social-media-icons">
+							<a href={link.socialMediaLink} target="_blank">
+								<img src={link.socialMediaIcon}  alt="icon"/>  </a>
+						</div>
+					</template>
+				</div>
+        
+                </template>
+                 <p class="copy-right">© 2024 Dubaidreamin All rights reserved.</p>
+
+            </div>
+        </div>
+
+        
+    </footer> -->
+    <!-- <body> -->
+    <div class="wrapper">
+    <footer class="siteFooter">
+        <div class="footerUp">
+            <div class="auto_container">
+                <div class="footerUp_detail">
+                    <div class="footerUp_row">
+                        <div class="footerUp_col f_w_30">
+                            <div class="footerLogo">
+                                <a href="#"><img src="../resource/dubaiImage/images/headerLogo.png" alt="#" /></a>
+                            </div>
+
+                            <div class="socialIcon_urls"> 
+                              
+                                <a href="https://twitter.com/dubaidreamin"><i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <!-- <a><i class="fa fa-instagram" aria-hidden="true"></i>
+                             
+                                </a> -->
+                                 <a href="https://www.linkedin.com/company/dubaidreamin/"><i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="footerUp_col f_w_20">
+                            <div class="footerLinks">
+                                <h6>Useful Links</h6>
+                                <ul>
+                                    <li><a href="#">Cargo</a></li>
+                                    <li><a href="#">Ship</a></li>
+                                    <li><a href="#">Port</a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+
+                        <div class="footerUp_col f_w_20">
+                            <div class="footerLinks">
+                                <h6>About Us</h6>
+                                <ul>
+                                    <li><a href={aboutUsLink}>Our Team</a></li>
+                                    <li><a href={speakersLink}>Speakers</a></li>
+                                    <li><a href={sponsorsLink}>Sponsors</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="footerUp_col f_w_30">
+                            <div class="footerLinks">
+                                <h6>Join Our Newsletter</h6>
+                                
+                                <div class="subcribe_email_sec">
+                                    <div class="subcribe_email">
+                                        <div class="subcribe_email_input">
+                                            <input type="text" value="" placeholder="Your email address" />
+                                        </div>
+                                        <div class="subcribe_email_sbmt">
+                                            <input type="submit" value="Subscribe" />
+                                        </div> 
+                                        
+                                    </div>
+
+                                    <p>*  Will send you weekly updates on our Newsletter
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footerbottom">
+            <p>© 2024 Dubaidreamin All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+<!-- </body> -->
+</template>

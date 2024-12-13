@@ -1,0 +1,227 @@
+.footer {
+    background-color: var(--purple);
+    padding: 40px 0;
+}
+
+.footer-container {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    display: flex;
+  
+    justify-content: space-between;
+}
+
+.footer-column {
+    /* flex: 1 1 25%; */
+    margin-bottom: 20px;
+	text-align: center;
+}
+.companyLogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.companyLogo img{
+    width: 80px;
+    margin-bottom: 20px;
+    height: 80px;
+}
+.footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.social-icons img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+.newsletter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter input {
+   width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.newsletter button {
+    background-color: var(--LIGHT-PINK);
+    color: white;
+    padding: 7px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+.copy-right{
+    font-size: 1.1rem;
+    text-align: center;
+    color: white;
+}
+.newsletter button:hover {
+    background-color: var(--DARK-PINK);
+}
+a, h4{
+	color: white;
+}
+
+.socialInfo .social-media-icons { width: auto; margin: 0px 10px; }
+.socialInfo .social-media-icons a img{ width: 30px; height: 30px; display: block; }
+
+/* .social-media-icons{} */
+
+.socialInfo{
+display: flex;
+}
+
+.slds-col{
+    
+          display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    }
+
+@media only screen and (max-width:760px) {
+	/* .footerDetail { flex-flow: column;} */
+	/* .socialInfo { padding-top: 10px;} */
+	.footer-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .slds-col{
+        width: 100%;
+
+    }
+	}
+
+
+    /* ---------------azeem bhai footer walay------------------------------ */
+
+    
+.siteFooter { width: 100%; position: relative; background-color: #130525;}
+
+.footerUp { width: 100%; position: relative; border-bottom: 1px solid #514B77;}
+
+.footerUp_detail { width: 100%; padding: 60px 0px 80px;}
+
+
+.footerUp_row { width: 100%; position: relative; display: flex; justify-content: space-between;}
+=======
+.footerUp_row { width: 100%; position: relative; display: flex;}
+
+
+.footerUp_col { width: auto;}
+
+.footerLogo { width: 100%; padding-bottom: 25px;} 
+
+.footerLogo a {max-width: 75px; display: block; }
+.footerLogo a img {width: 100%; display: block;}
+
+.footerUp_col .socialIcon_urls { justify-content: flex-start;}
+.footerUp_col .socialIcon_urls a{ border: 1px solid #E1E1E3; margin-left: 0px; margin-right: 10px;}
+
+.f_w_30 { width: 30% !important;}
+.f_w_20 { width: 20% !important;}
+
+
+.footerLinks { width: 100%;}
+
+.footerLinks h6 {font-family: 'PoppinsBold'; color: #fff; padding-bottom: 20px; font-size: 16px;}
+
+.footerLinks ul li { padding-bottom: 12px;}
+
+.footerLinks ul li a{ display: inline-block; color: #E1E1E3;}
+
+
+.subcribe_email_sec { width: 100%; }
+
+.subcribe_email { width: 100%; position: relative; border: 4px; overflow: hidden; display: flex;}
+
+.subcribe_email_input { width: 65%;}
+
+.subcribe_email_input input { width: 100%;height:100%; background-color: #EEEEFF; padding: 15px 15px; font-size: 12px; border-bottom-left-radius: 4px; border-top-left-radius: 4px;}
+
+.subcribe_email_sbmt { width: 35%;}
+
+.subcribe_email_sbmt input { width: 100%; background-color: #F478B5; padding: 15px 15px; height: 100%; font-size: 12px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; color: #fff; text-align: center;}
+
+.subcribe_email_sec p {font-family: 'PoppinsMedium'; font-size: 12px; color: #898292; padding-top: 15px; padding-right: 30px;}
+
+
+
+.footerbottom { width: 100%; position: relative; padding: 22px 20px; text-align: center;}
+
+.footerbottom p { padding: 0px; color: #fff;font-family: 'PoppinsLight';}
+
+/* h6{
+    text-align: center !important;
+} */
+h6.li{
+    text-align: left !important;
+}
+
+/* ul[c-dubaiFooter_dubaiFooter] {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.footerLinks ul {display: block;}
+
+
+
+@media only screen and (max-width:767px) {
+.footerUp_row {
+    display: block;
+}
+
+.footerUp_col { padding-bottom: 25px; width: 100% !important;}
+
+.footerUp_detail { 
+    padding: 40px 0px 0px;
+}
+.footerbottom p { 
+    font-size: 12px;
+}
+.footerLogo { 
+    padding-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

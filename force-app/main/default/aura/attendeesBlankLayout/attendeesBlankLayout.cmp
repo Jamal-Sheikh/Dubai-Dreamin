@@ -1,0 +1,64 @@
+<aura:component implements="forceCommunity:themeLayout">
+
+    <aura:attribute name="header" type="Aura.Component[]" />
+    <aura:attribute name="footer" type="Aura.Component[]" />
+    <aura:attribute name="BannerImage" type="Aura.Component[]" />
+    <aura:attribute name="Description" type="Aura.Component[]" />
+    <aura:attribute name="PostDescription" type="Aura.Component[]" />
+    <aura:attribute name="Sessions" type="Aura.Component[]" />
+    <aura:attribute name="Speakers" type="Aura.Component[]" />
+    <aura:attribute name="faq" type="Aura.Component[]" />
+    <aura:attribute name="contactUs" type="Aura.Component[]" />
+    <aura:attribute name="setEventId" type="Aura.Component[]" />
+    <aura:attribute name="Sponsors" type="Aura.Component[]" />
+    <div class="">
+        {!v.header}
+    </div>
+
+
+    <div class="">
+        <div class="bannerImage">
+            {!v.BannerImage}
+        </div>
+    </div>
+
+    <div class="">
+        <div class="description">
+            {!v.Description}
+        </div>
+    </div>
+    <div class="">
+        <div class="postDescription">
+            {!v.PostDescription}
+        </div>
+
+    </div>
+
+    <div class="">
+        <div class="Sessions">
+            {!v.Sessions}
+        </div>
+
+    </div>
+  
+        <div class="Speakers">
+            {!v.Speakers}
+        </div>
+        <div class="Sponsors">
+            {!v.Sponsors}
+        </div>
+
+    <div class="">
+        {!v.faq}
+    </div>
+
+    <div class="">
+        {!v.contactUs}
+    </div>
+    <div class="">
+        {!v.setEventId}
+    </div>
+    <div class="">
+        {!v.footer}
+    </div>
+</aura:component>

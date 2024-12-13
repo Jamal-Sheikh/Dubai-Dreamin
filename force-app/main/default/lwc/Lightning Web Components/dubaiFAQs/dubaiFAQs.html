@@ -1,0 +1,61 @@
+<template>
+	<section>
+		<div class="faqSection bg_f8f8f8">
+			<div class="auto_container">
+				<div class="faqSection_detail">
+					<div class="faqShape2"><img src="../resource/dubaiImage/images/faqShape2.png" alt="#" /></div>
+						<div class="faqShape3"><img src="../resource/dubaiImage/images/faqShape3.png" alt="#" /></div>
+							<div class="faq_content">
+								<h2>Fequently <br>
+                                        asked questions</h2>
+
+									<div class="faq_content_info">
+										<div class="faq_content_fl">
+											<ul>
+												<li>
+													<template if:true={faqList}>
+													<h1 style="">{faqLabel}</h1>
+
+													<div class="faq-data">
+														<template for:each={faqList} for:item="faq">
+															<div class="faq-box slds-col" key={faq.Id}>
+																<c-expandable-component question-header={faq.question}
+																	answer-body={faq.answer}>
+																</c-expandable-component>
+															</div>
+														</template>
+													</div>
+												</template>
+													<!-- <div class="faqData">
+														<a href="javascript:void(0)"
+															class="plusBtn"><img src="images/faq_icon.png" alt="#" /></a>
+
+															<strong>What is Dubai Dreamin?</strong>
+															<p>Offending belonging promotion provision an be oh
+																consulted ourselves it. Blessing welcomed ladyship she
+																met humoured sir breeding her. </p>
+													</div> -->
+												</li>
+
+												
+											</ul>
+										</div>
+
+
+										<div class="faq_content_fr">
+											<div class="haveQuestion_info">
+												<span><img src="../resource/dubaiImage/images/faq_shape1.png" alt="#" /></span>
+												<h5>Do you have more questions?</h5>
+												<p>Should you require any additional information or have further inquiries, please don't hesitate to reach out. We're here to assist you in any way we can.</p>
+												<a href="mailto:info@dubaidreamin.com"  class="shootBtn">Shoot a Direct Mail</a>
+												
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	</section>
+
+</template>

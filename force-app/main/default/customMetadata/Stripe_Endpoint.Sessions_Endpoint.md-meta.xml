@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sessions Endpoint</label>
+    <protected>false</protected>
+    <values>
+        <field>Api_Key__c</field>
+        <value xsi:type="xsd:string">sk_test_51Ooi90BG9mkkVMIk0Y9ms1YRanZ5Ypw16g9NGPa2VsQbdjTyKFbGoIqg6bx9lqkZXV4qaJ4qkNCS4MiLA8FL4SrR00s9Dxvc6Y</value>
+    </values>
+    <values>
+        <field>Endpoint_Name__c</field>
+        <value xsi:type="xsd:string">Sessions</value>
+    </values>
+    <values>
+        <field>Endpoint_Url__c</field>
+        <value xsi:type="xsd:string">https://api.stripe.com/v1/checkout/sessions</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "c8f384c3-bb5a-4302-83f6-cda43f246352",
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "configurationTags" : [ ],
+  "devName" : "Our_Speakers__c",
+  "id" : "03b095c2-0a95-47f4-89d8-fbec9a534331",
+  "label" : "Our Speakers",
+  "pageAccess" : "Public",
+  "routeType" : "custom-our-speakers",
+  "type" : "route",
+  "urlPrefix" : "our-speakers"
+}

@@ -1,0 +1,320 @@
+<template>
+    <div>
+        <main>
+            <div class="mainContainer innerpages_container"> 
+
+                <div class="innerPages speakerSponsor_bg">
+                    <div class="auto_container">
+                        
+                            <div class="innerPages_detail">
+                                <div class="customTittle">
+                                    <h1>SPONSORS INTEREST</h1>
+                                    <p>Dubai Dreamin' invites you to join us on an exhilarating journey as we strive to create unforgettable experiences for our Trailblazers. Your support is the catalyst that propels us towards our shared vision of innovation, inspiration, and empowerment. By filling out our sponsorship form, you're not just investing in an event; you're investing in the future. Be a part of something extraordinary – fuel our dreams and let's soar together!
+                                        This doesn't entail a commitment to sponsor; it's merely an expression of interest for us to reach out with additional details.</p>
+                                </div>
+                            
+                            
+
+
+
+                                
+                                    <div class="scrollable-content">
+                                        <form class="web-to-lead-form" action={actionURL} method="POST" >
+                                            <input type="hidden" name="oid" value={organizationId} />
+                                     <input type="hidden" name="retURL" value={pageUrl} />
+                                     <div class="innerPages_form">
+                                        <div class="ticketProcess_checkoutform">
+                                            <ul>
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>NAME</strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text" required  name="last_name" placeholder="Full Name" />
+                                                            <!-- <input type="text" value=""  /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>TITLE</strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text"  name="title" placeholder="Title Name"  />
+                                                            <!-- <input type="text" value="" /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+        
+        
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>EMAIL</strong>
+                                                        <div class="customInput_field">
+                                                            <input type="email" required name="email" id="email" placeholder="@abc.com" class="email-input" onblur={handleEmailBlur} />
+
+                                                            <!-- <input type="email" required  name="email" placeholder="@abc.com" /> -->
+                                                            <!-- <input type="text" value="" placeholder="@abc.com" /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>PHONE </strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text" required class="" name="phone" />
+                                                            <!-- <input type="text" value="" placeholder="" /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+        
+        
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>COMPANY /ORGANIZATION</strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text" required name="company" />
+                                                            <!-- <input type="text" value="" placeholder="Name" /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>INDUSTRY</strong>
+                                                        <div class="customInput_field">
+
+                                                            <!-- <select name="industry" id="Industry"   value={companyIndustry} >
+                                                                <template for:each={industryPicklistValues} for:item="option">
+                                                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                                                </template>
+                        
+                                                            </select> -->
+                                                            <select  name="industry">
+                                                                <option value="Banking">Banking</option>
+                                                                <option value="Biotechnology">Biotechnology</option>
+                                                                <option value="Chemicals">Chemicals</option>
+                                                                <option value="Communications">Communications</option>
+                                                                <option value="Construction">Construction</option>
+                                                                <option value="Consulting">Consulting</option>
+                                                                <option value="Education">Education</option>
+                                                                <option value="Electronics">Electronics</option>
+                                                                <option value="Energy">Energy</option>
+                                                                <option value="Engineering">Engineering</option>
+                                                                <option value="Entertainment">Entertainment</option>
+                                                                <option value="Environmental">Environmental</option>
+                                                                <option value="Finance">Finance</option>
+                                                                <option value="Food & Beverage">Food & Beverage</option>
+                                                                <option value="Government">Government</option>
+                                                                <option value="Healthcare">Healthcare</option>
+                                                                <option value="Hospitality">Hospitality</option>
+                                                                <option value="Insurance">Insurance</option>
+                                                                <option value="Machinery">Machinery</option>
+                                                                <option value="Manufacturing">Manufacturing</option>
+                                                                <option value="Media">Media</option>
+                                                                <option value="Not For Profit">Not For Profit</option>
+                                                                <option value="Recreation">Recreation</option>
+                                                                <option value="Retail">Retail</option>
+                                                                <option value="Shipping">Shipping</option>
+                                                                <option value="Technology">Technology</option>
+                                                                <option value="Telecommunications">Telecommunications</option>
+                                                                <option value="Transportation">Transportation</option>
+                                                                <option value="Utilities">Utilities</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+            
+                                                        </div>
+                                                    </div>
+                                                </li>
+        
+        
+        
+                                                <li>
+                                                    <div class="customInput_col">
+                                                        <strong>COMPANY TYPE</strong>
+                                                        <div class="customInput_field">
+                                                            <!-- <select name="type" id="type"  value={companyType} >
+                                                                <template for:each={companyTypePicklistValues} for:item="option">
+                                                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                                                </template>
+                        
+                                                            </select> -->
+                                                            <select name="Company_Type__c">
+                                                                <option>Other</option>
+                                                                <option>ISV</option>
+                                                                <option>Salesforce Partner</option>
+                                                                <option>Recruitment Agency</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="">
+                                                    <div class="customInput_col">
+                                                        <strong> COMPANY WEBSITE </strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text" placeholder="https://company.com"  name="url" />
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </li>
+        
+        
+                                                <li class="">
+                                                    <div class="customInput_col">
+                                                        <strong> YOUR COMPANY HQ </strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text" name="Company_HQ__c" />
+                                                            <input type="hidden" class="slds-input no-border fat-fonts" name="Content_Id__c"  value={documentId}/>
+                                                            <input type="hidden"  class="slds-input no-border fat-fonts" name="Event_Id__c" value={selectedEventId}/>
+                                                            <input type="hidden"  class="slds-input no-border fat-fonts" name="lead_source" value="Web"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="">
+                                                    <div class="customInput_col">
+                                                        <strong> BRANDING </strong>
+                                                        <div class="customInput_field">
+                                                            <!-- <input type="text" value="" placeholder="COMPANY LOGO.PNG           " /> -->
+                                                            <lightning-file-upload
+                            label="Attach Logo"
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onuploadfinished={handleUploadFinished}
+                            required>
+                    </lightning-file-upload>
+                    <span>{fileName}</span>
+
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </li> 
+        
+        
+                                                <li class="">
+                                                    <div class="customInput_col">
+                                                        <strong> COMPANY DESCRIPTION </strong>
+                                                        <div class="customInput_field">
+                                                            <input type="text"  name="description" placeholder="COMPANY TAGLINE"/>
+                                                            <!-- <input type="text" value="" placeholder="COMPANY TAGLINE" /> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="">
+                                                    <div class="customInput_col">
+                                                        <strong>SPONSORSHIP LEVEL</strong>
+                                                        <div class="customInput_field">
+                                                            <!-- <select name="level" id="level"  value={sponsorshipLevel} >
+                                                                <template for:each={sponsorshipLevelPicklistValues} for:item="option">
+                                                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                                                </template>
+                                                            </select> -->
+                            
+                                                            <select name="Sponsorship_Level__c" required>
+                                                                <option>Platinum</option> 
+                                                                <option>Gold</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </li> 
+         
+        
+        
+                                                <li class="w-100"> 
+        
+                                                    <div class="customCheckbox">
+                                                        <label><input type="checkbox" required />Submit means you are agree to our  Terms of Registration Policy</label>
+                                                    </div>
+                                                </li>
+        
+        
+                                                <li class="w-100">
+                                                    <div class="formSubmitBtn">
+                                                        <button class="btnDefault" type="submit" >SUBMIT</button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                        </form>  
+                                        
+                                    </div>
+                                    <div >
+                                        <c-dubai-approved-sponsors ></c-dubai-approved-sponsors></div>
+                                  
+                                    <!-- <div class="sponsor_section">
+                                         <c-child-component message={messageToChild}></c-child-component>
+                                    </div>
+                                       
+                                        <div class="sponsor_section_tittle">
+                                            <span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+        
+                                            <h2>OUR SPONSORS</h2>
+                                        </div>
+        
+        
+                                        <div class="sponsors_categories">
+                                            <strong>GOLD</strong>
+        
+        
+                                            <div class="sponsors_categories_list">
+                                                <ul>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo1.png" alt="#" /></span></li>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo2.png" alt="#" /></span></li>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo3.png" alt="#" /></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+        
+        
+                                        <div class="sponsors_categories">
+                                            <strong>PLATINUM</strong>
+        
+        
+                                            <div class="sponsors_categories_list">
+                                                <ul>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo1.png" alt="#" /></span></li>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo2.png" alt="#" /></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+        
+        
+        
+                                        <div class="sponsors_categories">
+                                            <strong>BRONZE</strong>
+        
+        
+                                            <div class="sponsors_categories_list">
+                                                <ul>
+                                                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo3.png" alt="#" /></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                            </div>
+                       
+                        <!-- <template if:true={submittedThankyou}>
+                            <div class="innerPages_detail">
+                                <div class="sponsor_section_tittle onThankPage" >
+                                    <span><img src="../resource/dubaiImage/images/thankyou_img.png" alt="#" /></span>
+        
+        
+        
+                                    <span><strong style="justify-content: center">Thank You Your Sponsor request Submitted Succesfully! </strong></span>
+                                    <a>We Will Contact You Soon.</a>
+        
+                                    <span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+        
+                                </div>  
+        
+        
+                            </div>
+                        </template> -->
+                        </div>
+                    </div>
+ 
+
+
+            </div>
+        </main>
+    </div>
+</template>

@@ -1,0 +1,91 @@
+<!-- <template>
+    <div class="sponsor_section">
+        <div class="sponsor_section_tittle">
+            <span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+
+            <h2>OUR SPONSORS</h2>
+        </div>
+
+
+        <div class="sponsors_categories">
+            <strong>GOLD</strong>
+
+
+            <div class="sponsors_categories_list">
+                <ul>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo1.png" alt="#" /></span></li>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo2.png" alt="#" /></span></li>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo3.png" alt="#" /></span></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="sponsors_categories">
+            <strong>PLATINUM</strong>
+
+
+            <div class="sponsors_categories_list">
+                <ul>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo1.png" alt="#" /></span></li>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo2.png" alt="#" /></span></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="sponsors_categories">
+            <strong>BRONZE</strong>
+
+
+            <div class="sponsors_categories_list">
+                <ul>
+                    <li><span><img src="../resource/dubaiImage/images/sponsor_logo3.png" alt="#" /></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template> -->
+
+
+
+
+
+<!-- Updated  55 83-->
+<template>
+
+    <div class="">
+    <div class="sponsor_section ">
+        <div class="sponsor_section_tittle">
+            <span><img src="../resource/dubaiImage/images/bannerLogo.png" alt="#" /></span>
+         
+        </div>
+        <template if:true={showSponsors} >
+        <div class="sponsor_section_tittle">
+         <h2 style="margin-top:100px;">OUR SPONSORS</h2>
+
+        </div>
+        
+        
+        <!-- Iterate over each sponsorship level -->
+        <template for:each={sponsorInformation} for:item="sponsorCategory">
+            <div key={sponsorCategory.sponsorshipLevel} class="sponsors_categories">
+                <strong>{sponsorCategory.sponsorshipLevel}</strong>
+
+                <!-- Iterate over sponsors within each sponsorship level -->
+                <div class="sponsors_categories_list">
+                    <ul>
+                        <template for:each={sponsorCategory.sponsors} for:item="sponsor">
+                            <li key={sponsor.Id}>
+                                <span><img src={sponsor.sponsorImage} alt={sponsor.sponsorshipLevel} /></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </template>
+        </template>
+    </div>
+</div>
+</template>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "d17e33d3-cd6d-455f-b284-3fdeab76aec0",
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "configurationTags" : [ ],
+  "devName" : "Sponsors__c",
+  "id" : "a9f177b0-02ad-49e8-a203-56a884e34489",
+  "label" : "Sponsors",
+  "pageAccess" : "Public",
+  "routeType" : "custom-sponsors",
+  "type" : "route",
+  "urlPrefix" : "sponsors"
+}

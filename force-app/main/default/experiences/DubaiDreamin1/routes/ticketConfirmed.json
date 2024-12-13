@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "0f3d9d6b-2dbc-449f-9076-83fdc700a12d",
+  "appPageId" : "513fab29-a29c-4556-965b-30f6c5061c4a",
+  "configurationTags" : [ ],
+  "devName" : "TicketConfirmed__c",
+  "id" : "5fd3302a-6102-406f-ab7f-485dac81a214",
+  "label" : "Ticket Confirmed",
+  "pageAccess" : "Public",
+  "routeType" : "custom-ticket-confirmed",
+  "type" : "route",
+  "urlPrefix" : "ticket-confirmed"
+}
