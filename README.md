@@ -3,6 +3,9 @@
 ## Overview
 The Dubai Dreamin' project is a Salesforce-powered event management application tailored for a large-scale conference. It integrates diverse Salesforce tools and features, including attendees, speakers, payment processing, and approval workflows, making it an ideal solution for streamlined event operations.
 
+![dubai](https://github.com/user-attachments/assets/a1189d74-64e1-4883-95ed-bb417836d271)
+
+
 ## Key Features
 
 ### **1. Apex Classes**
@@ -80,9 +83,8 @@ This application provides a one-stop solution for event management, offering:
 ## Contact
 For more information or collaboration opportunities, please contact:
 
-**Fahad Yaseen**
-Email: [fahadyaseen116@gmail.com](mailto:fahadyaseen116@gmail.com)
-
+**Jamal Sheikh**
+Email: jamal@elevateitstudio.pk
 ---
 
 Submit this project on Upwork to showcase expertise in Salesforce development and event management solutions.
